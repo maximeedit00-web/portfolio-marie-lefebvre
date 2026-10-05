@@ -1,0 +1,14 @@
+{
+  "items": [
+    { "title": "Tour de France 2025", "description": "Affiche pour la Ville de Vitré.", "poster": "/media/affiches/affiche-01.png" },
+    { "title": "Tombée dans les pommes", "description": "Campagne « Vitré, ville apaisée ».", "poster": "/media/affiches/affiche-02.png" },
+    { "title": "Conseil à la noix", "description": "Campagne « Vitré, ville apaisée ».", "poster": "/media/affiches/affiche-03.png" },
+    { "title": "Gros sur la patate", "description": "Campagne « Vitré, ville apaisée ».", "poster": "/media/affiches/affiche-04.png" },
+    { "title": "Le champignon", "description": "Campagne « Vitré, ville apaisée ».", "poster": "/media/affiches/affiche-05.png" },
+    { "title": "Des prunes", "description": "Campagne « Vitré, ville apaisée ».", "poster": "/media/affiches/affiche-06.png" },
+    { "title": "La fin des haricots", "description": "Campagne « Vitré, ville apaisée ».", "poster": "/media/affiches/affiche-07.png" },
+    { "title": "Aurore Culture Loisirs", "description": "Affiche de projet.", "poster": "/media/affiches/affiche-11.png" },
+    { "title": "Tour de France en ville", "description": "L’affiche installée à Vitré.", "poster": "/media/affiches/affiche-12.jpg" },
+    { "title": "Tour de France en ville", "description": "L’affiche installée à Vitré.", "poster": "/media/affiches/affiche-13.jpg" }
+  ]
+}

@@ -59,7 +59,10 @@ const year = new Date().getFullYear();
 
 		<div class="mt-16 flex flex-col gap-3 border-t border-current/10 pt-6 text-xs text-muted-dark sm:flex-row sm:items-center sm:justify-between">
 			<p>© {year} Marie Lefebvre. Tous droits réservés.</p>
-			<p>Montage vidéo · Graphisme · Communication</p>
+			<p class="flex flex-wrap gap-x-5 gap-y-1">
+				<a href="/mentions-legales" class="link-underline transition-colors hover:text-cream-50">Mentions légales</a>
+				<a href="/confidentialite" class="link-underline transition-colors hover:text-cream-50">Confidentialité</a>
+			</p>
 		</div>
 	</div>
 </footer>

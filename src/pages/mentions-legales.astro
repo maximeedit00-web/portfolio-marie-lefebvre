@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../data/site';
+---
+
+<Base
+	title="Mentions légales"
+	description="Mentions légales du site de Marie Lefebvre, monteuse vidéo."
+>
+	<PageHero eyebrow="Informations" title="Mentions légales." />
+
+	<section class="section">
+		<div class="shell max-w-3xl space-y-10 text-cocoa">
+			<div>
+				<h2 class="font-display text-2xl text-ink">Éditeur du site</h2>
+				<p class="mt-3">
+					Marie Lefebvre<br />
+					<em>[Adresse à compléter]</em><br />
+					E-mail : <a class="link-underline" href={`mailto:${site.email}`}>{site.email}</a>
+				</p>
+			</div>
+
+			<div>
+				<h2 class="font-display text-2xl text-ink">Responsable de la publication</h2>
+				<p class="mt-3">Marie Lefebvre.</p>
+			</div>
+
+			<div>
+				<h2 class="font-display text-2xl text-ink">Hébergement</h2>
+				<p class="mt-3">
+					<em>[Hébergeur à compléter — ex. Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis]</em>
+				</p>
+			</div>
+
+			<div>
+				<h2 class="font-display text-2xl text-ink">Propriété intellectuelle</h2>
+				<p class="mt-3">
+					L’ensemble des contenus présents sur ce site (montages vidéo, miniatures, affiches,
+					dessins, textes et éléments graphiques) est protégé par le droit d’auteur. Ils restent
+					la propriété de Marie Lefebvre et/ou de leurs auteurs respectifs.
+				</p>
+				<p class="mt-3">
+					Toute reproduction, représentation ou utilisation, totale ou partielle, sans
+					autorisation écrite préalable est interdite.
+				</p>
+			</div>
+
+			<div>
+				<h2 class="font-display text-2xl text-ink">Données personnelles et cookies</h2>
+				<p class="mt-3">
+					Ce site ne dépose aucun cookie de mesure d’audience ou publicitaire et ne comporte pas
+					de formulaire. Pour en savoir plus, consultez la
+					<a class="link-underline" href="/confidentialite">politique de confidentialité</a>.
+				</p>
+			</div>
+		</div>
+	</section>
+</Base>

@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
@@ -7,13 +6,13 @@ import { miniatures, dessins, type Graphic } from '../data/graphics';
 
 const cartes: { titre: string; sous: string; items: Graphic[]; ratio: string; contain: boolean }[] = [
 	{ titre: 'Miniatures', sous: 'Les vignettes de mes vidéos.', items: miniatures, ratio: 'aspect-video', contain: false },
-	{ titre: 'Dessins', sous: 'Quelques dessins et peintures.', items: dessins, ratio: 'aspect-[4/5]', contain: true },
+	{ titre: 'Dessins & illustrations', sous: 'Ce que je dessine à côté.', items: dessins, ratio: 'aspect-[4/5]', contain: true },
 ];
 ---
 
 <Base
 	title="Graphisme"
-	description="Mes créations graphiques : miniatures YouTube, dessins et peintures."
+	description="Mes créations graphiques : miniatures YouTube, dessins et illustrations."
 >
 	<PageHero
 		script="Mes créations"
@@ -33,21 +32,22 @@ const cartes: { titre: string; sous: string; items: Graphic[]; ratio: string; co
 				<div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{carte.items.map((g, i) => (
 						<figure class="group" data-reveal style={`--reveal-delay:${(i % 3) * 70}ms`}>
-							<div class:list={['card-media relative', carte.ratio, carte.contain && 'bg-white']}>
-								<Image
-									src={g.image}
-									alt={`${g.title}, ${g.description}`}
-									widths={carte.contain ? [400, 600, 760] : [520, 860, 1100]}
-									sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+							<div class:list={['card-media relative', carte.ratio, 'bg-white']}>
+								<img
+									src={g.poster}
+									alt={g.title || carte.titre}
 									loading="lazy"
+									decoding="async"
 									class:list={['h-full w-full', carte.contain ? 'object-contain' : 'object-cover']}
 								/>
 								<div class="card-sheen"></div>
 							</div>
-							<figcaption class="mt-3">
-								<h3 class="font-display text-lg">{g.title}</h3>
-								<p class="text-sm text-muted">{g.description}</p>
-							</figcaption>
+							{g.title && (
+								<figcaption class="mt-3">
+									<h3 class="font-display text-lg">{g.title}</h3>
+									{g.description && <p class="text-sm text-muted">{g.description}</p>}
+								</figcaption>
+							)}
 						</figure>
 					))}
 				</div>

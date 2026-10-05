@@ -1,0 +1,28 @@
+{
+  "items": [
+    { "kind": "Miniature", "orientation": "landscape", "title": "", "description": "", "poster": "/media/graphics/mini-01.png" },
+    { "kind": "Miniature", "orientation": "landscape", "title": "", "description": "", "poster": "/media/graphics/mini-02.png" },
+    { "kind": "Miniature", "orientation": "landscape", "title": "", "description": "", "poster": "/media/graphics/mini-03.png" },
+    { "kind": "Miniature", "orientation": "landscape", "title": "", "description": "", "poster": "/media/graphics/mini-04.png" },
+    { "kind": "Miniature", "orientation": "landscape", "title": "", "description": "", "poster": "/media/graphics/mini-05.png" },
+    { "kind": "Miniature", "orientation": "landscape", "title": "", "description": "", "poster": "/media/graphics/mini-06.png" },
+    { "kind": "Miniature", "orientation": "landscape", "title": "", "description": "", "poster": "/media/graphics/mini-07.png" },
+    { "kind": "Miniature", "orientation": "landscape", "title": "", "description": "", "poster": "/media/graphics/mini-08.png" },
+    { "kind": "Miniature", "orientation": "landscape", "title": "", "description": "", "poster": "/media/graphics/mini-09.png" },
+    { "kind": "Miniature", "orientation": "landscape", "title": "", "description": "", "poster": "/media/graphics/mini-10.png" },
+    { "kind": "Miniature", "orientation": "landscape", "title": "", "description": "", "poster": "/media/graphics/mini-11.png" },
+    { "kind": "Miniature", "orientation": "landscape", "title": "", "description": "", "poster": "/media/graphics/mini-12.png" },
+    { "kind": "Dessin", "orientation": "landscape", "title": "", "description": "", "poster": "/media/graphics/dessin-01.png" },
+    { "kind": "Dessin", "orientation": "portrait", "title": "", "description": "", "poster": "/media/graphics/dessin-02.jpg" },
+    { "kind": "Dessin", "orientation": "portrait", "title": "", "description": "", "poster": "/media/graphics/dessin-03.jpg" },
+    { "kind": "Dessin", "orientation": "portrait", "title": "", "description": "", "poster": "/media/graphics/dessin-04.jpg" },
+    { "kind": "Dessin", "orientation": "portrait", "title": "", "description": "", "poster": "/media/graphics/dessin-05.jpg" },
+    { "kind": "Dessin", "orientation": "portrait", "title": "", "description": "", "poster": "/media/graphics/dessin-06.jpg" },
+    { "kind": "Dessin", "orientation": "portrait", "title": "", "description": "", "poster": "/media/graphics/dessin-07.jpg" },
+    { "kind": "Dessin", "orientation": "portrait", "title": "", "description": "", "poster": "/media/graphics/dessin-08.jpg" },
+    { "kind": "Dessin", "orientation": "portrait", "title": "", "description": "", "poster": "/media/graphics/dessin-09.jpg" },
+    { "kind": "Dessin", "orientation": "portrait", "title": "", "description": "", "poster": "/media/graphics/dessin-10.jpg" },
+    { "kind": "Dessin", "orientation": "portrait", "title": "", "description": "", "poster": "/media/graphics/dessin-11.jpg" },
+    { "kind": "Dessin", "orientation": "portrait", "title": "", "description": "", "poster": "/media/graphics/dessin-12.jpg" }
+  ]
+}

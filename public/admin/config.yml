@@ -83,3 +83,37 @@ collections:
               - { label: "Contexte", name: "role", widget: "string", required: false }
               - { label: "Note (1 à 5)", name: "rating", widget: "number", min: 1, max: 5, default: 5 }
               - { label: "Texte", name: "text", widget: "text" }
+
+  - name: graphics
+    label: "Graphisme (miniatures & dessins)"
+    files:
+      - name: graphics
+        label: "Miniatures & dessins"
+        file: "content/graphics.json"
+        fields:
+          - label: "Éléments"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.kind}}"
+            fields:
+              - { label: "Type", name: "kind", widget: "select", options: ["Miniature", "Dessin"] }
+              - { label: "Orientation", name: "orientation", widget: "select", options: ["landscape", "portrait"], default: "portrait" }
+              - { label: "Titre (optionnel)", name: "title", widget: "string", required: false }
+              - { label: "Légende (optionnel)", name: "description", widget: "string", required: false }
+              - { label: "Image", name: "poster", widget: "image" }
+
+  - name: affiches
+    label: "Affiches (Comm)"
+    files:
+      - name: affiches
+        label: "Affiches"
+        file: "content/affiches.json"
+        fields:
+          - label: "Affiches"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Titre (optionnel)", name: "title", widget: "string", required: false }
+              - { label: "Légende (optionnel)", name: "description", widget: "string", required: false }
+              - { label: "Image", name: "poster", widget: "image" }

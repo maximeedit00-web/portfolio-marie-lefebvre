@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../data/site';
+---
+
+<Base
+	title="Politique de confidentialité"
+	description="Politique de confidentialité et de protection des données du site de Marie Lefebvre."
+>
+	<PageHero eyebrow="Informations" title="Politique de confidentialité." />
+
+	<section class="section">
+		<div class="shell max-w-3xl space-y-10 text-cocoa">
+			<div>
+				<h2 class="font-display text-2xl text-ink">Responsable du traitement</h2>
+				<p class="mt-3">
+					Marie Lefebvre — <a class="link-underline" href={`mailto:${site.email}`}>{site.email}</a>
+				</p>
+			</div>
+
+			<div>
+				<h2 class="font-display text-2xl text-ink">Données collectées</h2>
+				<p class="mt-3">
+					Ce site ne comporte pas de formulaire de contact et ne collecte aucune donnée à votre
+					insu. Les seules informations transmises sont celles que vous m’envoyez volontairement
+					par e-mail ou via les réseaux sociaux (Instagram, Discord).
+				</p>
+			</div>
+
+			<div>
+				<h2 class="font-display text-2xl text-ink">Cookies</h2>
+				<p class="mt-3">
+					Ce site n’utilise pas de cookies de suivi, de mesure d’audience ou de publicité.
+				</p>
+			</div>
+
+			<div>
+				<h2 class="font-display text-2xl text-ink">Vos droits</h2>
+				<p class="mt-3">
+					Conformément au RGPD, vous disposez d’un droit d’accès, de rectification,
+					d’effacement et d’opposition sur vos données. Pour l’exercer, écrivez à
+					<a class="link-underline" href={`mailto:${site.email}`}>{site.email}</a>.
+				</p>
+			</div>
+
+			<div>
+				<h2 class="font-display text-2xl text-ink">Hébergement</h2>
+				<p class="mt-3"><em>[Hébergeur à compléter]</em></p>
+			</div>
+		</div>
+	</section>
+</Base>
