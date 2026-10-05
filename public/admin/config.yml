@@ -1,9 +1,8 @@
 # Configuration de l'administration (Decap CMS)
-# L'interface est disponible sur /admin
+# Interface : /admin
 #
-# EN LOCAL : lancez `npm run cms` puis `npm run dev`, et ouvrez http://localhost:4321/admin
-# EN LIGNE : déployez sur Netlify, activez Identity + Git Gateway, puis invitez
-# uniquement l'e-mail de la cliente. Elle pourra se connecter sur /admin.
+# EN LOCAL : `npm run cms` puis `npm run dev`, ouvrir http://localhost:4321/admin et cliquer "Login".
+# EN LIGNE : sur Netlify, activer Identity + Git Gateway, puis inviter uniquement l'e-mail de la cliente.
 
 backend:
   name: git-gateway
@@ -15,98 +14,95 @@ media_folder: "public/media"
 public_folder: "/media"
 
 collections:
-  - name: settings
-    label: "Réglages"
+  - name: textes
+    label: "1. Textes du site"
     files:
       - name: site
-        label: "Infos & textes du site"
+        label: "Textes (accueil, à propos, contacts)"
         file: "content/settings.json"
         fields:
-          - { label: "Nom", name: "name", widget: "string" }
-          - { label: "Nom court", name: "shortName", widget: "string" }
-          - { label: "Métier", name: "role", widget: "string" }
-          - { label: "Spécialité", name: "speciality", widget: "string" }
+          - { label: "Nom affiché", name: "name", widget: "string", hint: "Ex. Marie Lefebvre" }
+          - { label: "Prénom court", name: "shortName", widget: "string" }
+          - { label: "Métier", name: "role", widget: "string", hint: "Ex. Monteuse vidéo" }
+          - { label: "Spécialités (séparées par ·)", name: "speciality", widget: "string" }
           - { label: "Accroche", name: "tagline", widget: "string" }
-          - { label: "Description (référencement)", name: "description", widget: "text" }
+          - { label: "Description pour Google", name: "description", widget: "text" }
           - { label: "E-mail", name: "email", widget: "string" }
           - { label: "Instagram (pseudo)", name: "instagram_handle", widget: "string" }
-          - { label: "Instagram (lien)", name: "instagram_url", widget: "string" }
+          - { label: "Instagram (lien complet)", name: "instagram_url", widget: "string" }
           - { label: "Discord (pseudo)", name: "discord_handle", widget: "string" }
           - { label: "Discord (lien)", name: "discord_url", widget: "string" }
           - { label: "Accueil — petit mot manuscrit", name: "hero_script", widget: "string" }
           - { label: "Accueil — grand titre", name: "hero_title", widget: "string" }
-          - { label: "Accueil — texte d'intro", name: "hero_intro", widget: "text" }
+          - { label: "Accueil — paragraphe d'introduction", name: "hero_intro", widget: "text" }
           - { label: "À propos — paragraphe 1", name: "about_p1", widget: "text" }
           - { label: "À propos — paragraphe 2", name: "about_p2", widget: "text" }
           - { label: "À propos — paragraphe 3", name: "about_p3", widget: "text" }
 
   - name: videos
-    label: "Vidéos (Montage)"
+    label: "2. Vidéos"
     files:
       - name: projects
-        label: "Projets"
+        label: "Mes vidéos"
         file: "content/projects.json"
         fields:
           - label: "Liste des vidéos"
             name: "items"
             widget: "list"
             summary: "{{fields.title}}"
+            hint: "Pour ajouter une vidéo : bouton en bas de liste. Remplis un ID YouTube OU un fichier vidéo."
             fields:
               - { label: "Titre", name: "title", widget: "string" }
-              - { label: "Lien (slug)", name: "slug", widget: "string", hint: "Sans espaces ni accents. Ex. : mon-super-montage" }
+              - { label: "Identifiant du lien (sans espaces ni accents)", name: "slug", widget: "string", hint: "Ex. mon-super-montage" }
               - { label: "Créateur (laisser vide si c'est toi)", name: "channel", widget: "string", required: false }
               - label: "Catégorie"
                 name: "category"
                 widget: "select"
                 options: ["Montage long", "Formats courts", "Vlog", "Motion design", "Trailer", "Créateurs", "Communication"]
-              - { label: "Format", name: "format", widget: "select", options: ["16:9", "9:16"] }
-              - { label: "Orientation", name: "orientation", widget: "select", options: ["horizontal", "vertical"] }
-              - { label: "ID YouTube (ex. dQw4w9WgXcQ)", name: "videoId", widget: "string", required: false, hint: "Pour une vidéo YouTube (publiée ou non répertoriée)" }
-              - { label: "Fichier vidéo (ex. /videos/mon-film.mp4)", name: "videoFile", widget: "string", required: false, hint: "Pour une vidéo hébergée sur le site (dossier public/videos)" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Miniature", name: "poster", widget: "image" }
-              - { label: "Mettre en vedette (grand format)", name: "featured", widget: "boolean", default: false, required: false }
+              - { label: "Format", name: "format", widget: "select", options: ["16:9", "9:16"], hint: "16:9 = horizontal · 9:16 = vertical (short / reel)" }
+              - { label: "Sens", name: "orientation", widget: "select", options: ["horizontal", "vertical"] }
+              - { label: "ID YouTube", name: "videoId", widget: "string", required: false, hint: "La partie après « v= » dans le lien. Ex. dQw4w9WgXcQ" }
+              - { label: "Fichier vidéo hébergé sur le site", name: "videoFile", widget: "string", required: false, hint: "Ex. /videos/mon-film.mp4 — laisse vide si tu utilises YouTube" }
+              - { label: "Description courte", name: "description", widget: "text" }
+              - { label: "Miniature", name: "poster", widget: "image", hint: "L'image affichée (16:9 ou 9:16)" }
+              - { label: "Mettre en vedette (grand format sur l'accueil)", name: "featured", widget: "boolean", default: false, required: false }
 
-  - name: reviews
-    label: "Avis"
+  - name: miniatures
+    label: "3. Miniatures"
     files:
-      - name: reviews
-        label: "Témoignages clients"
-        file: "content/reviews.json"
+      - name: miniatures
+        label: "Mes miniatures"
+        file: "content/miniatures.json"
         fields:
-          - label: "Liste des avis"
+          - label: "Miniatures"
             name: "items"
             widget: "list"
-            summary: "{{fields.author}} — {{fields.rating}}/5"
+            summary: "{{fields.title}}"
+            hint: "Supprime une miniature avec la corbeille, ou ajoute-en une en bas."
             fields:
-              - { label: "Nom", name: "author", widget: "string", required: false }
-              - { label: "Contexte", name: "role", widget: "string", required: false }
-              - { label: "Note (1 à 5)", name: "rating", widget: "number", min: 1, max: 5, default: 5 }
-              - { label: "Texte", name: "text", widget: "text" }
-
-  - name: graphics
-    label: "Graphisme (miniatures & dessins)"
-    files:
-      - name: graphics
-        label: "Miniatures & dessins"
-        file: "content/graphics.json"
-        fields:
-          - label: "Éléments"
-            name: "items"
-            widget: "list"
-            summary: "{{fields.kind}}"
-            fields:
-              - { label: "Type", name: "kind", widget: "select", options: ["Miniature", "Dessin"] }
-              - { label: "Orientation", name: "orientation", widget: "select", options: ["landscape", "portrait"], default: "portrait" }
               - { label: "Titre (optionnel)", name: "title", widget: "string", required: false }
-              - { label: "Légende (optionnel)", name: "description", widget: "string", required: false }
+              - { label: "Image", name: "poster", widget: "image" }
+
+  - name: dessins
+    label: "4. Dessins & illustrations"
+    files:
+      - name: dessins
+        label: "Mes dessins"
+        file: "content/dessins.json"
+        fields:
+          - label: "Dessins"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Titre (optionnel)", name: "title", widget: "string", required: false }
               - { label: "Image", name: "poster", widget: "image" }
 
   - name: affiches
-    label: "Affiches (Comm)"
+    label: "5. Affiches"
     files:
       - name: affiches
-        label: "Affiches"
+        label: "Mes affiches"
         file: "content/affiches.json"
         fields:
           - label: "Affiches"
@@ -117,3 +113,20 @@ collections:
               - { label: "Titre (optionnel)", name: "title", widget: "string", required: false }
               - { label: "Légende (optionnel)", name: "description", widget: "string", required: false }
               - { label: "Image", name: "poster", widget: "image" }
+
+  - name: avis
+    label: "6. Avis"
+    files:
+      - name: reviews
+        label: "Témoignages"
+        file: "content/reviews.json"
+        fields:
+          - label: "Avis"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.author}}"
+            fields:
+              - { label: "Nom", name: "author", widget: "string", required: false }
+              - { label: "Contexte", name: "role", widget: "string", required: false }
+              - { label: "Note (1 à 5)", name: "rating", widget: "number", min: 1, max: 5, default: 5 }
+              - { label: "Texte", name: "text", widget: "text" }
