@@ -5,11 +5,11 @@ import { site } from '../data/site';
 
 interface Props {
 	title: string;
-	description?: string;
+	description: string;
 	image?: unknown;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const fullTitle = title === site.name ? `${site.name} — ${site.role}` : `${title} — ${site.name}`;
@@ -41,5 +41,18 @@ const jsonLd = {
 <link rel="canonical" href={canonical} />
 
 <title>{fullTitle}</title>
+<meta name="description" content={description} />
+
+<!-- Aperçu au partage : titre + description, SANS image -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:locale" content="fr_FR" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
 
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
