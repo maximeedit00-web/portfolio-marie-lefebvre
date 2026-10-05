@@ -1,7 +1,19 @@
 {
   "items": [
-    { "name": "", "logo": "", "url": "" },
-    { "name": "", "logo": "", "url": "" },
-    { "name": "", "logo": "", "url": "" }
+    {
+      "name": "GaspardFrançais",
+      "logo": "https://www.youtube.com/@GaspardFran%C3%A7ais",
+      "url": "https://www.youtube.com/@GaspardFrançais"
+    },
+    {
+      "name": "JamaisMoelleux",
+      "logo": "/media/channels4_profile.jpg",
+      "url": "https://www.youtube.com/results?search_query=jamaismoelleux"
+    },
+    {
+      "name": "Timéoox ",
+      "logo": "/media/channels4_profile-1-.jpg",
+      "url": "https://www.youtube.com/@Timeoox"
+    }
   ]
 }
