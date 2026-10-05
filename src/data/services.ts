@@ -10,6 +10,8 @@ export interface Service {
 	items: string[];
 	/** Lien facultatif vers une page dédiée. */
 	href?: string;
+	/** Libellé du lien. */
+	linkLabel?: string;
 }
 
 export const services: Service[] = [
@@ -25,6 +27,7 @@ export const services: Service[] = [
 		lead: 'Miniatures, affiches et dessins pour habiller vos contenus.',
 		items: ['Miniatures', 'Affiches', 'Dessins'],
 		href: '/graphisme',
+		linkLabel: 'Voir le graphisme',
 	},
 	{
 		icon: 'lucide:megaphone',
@@ -32,6 +35,7 @@ export const services: Service[] = [
 		lead: 'Faire connaître un projet ou une structure, sur le terrain comme en ligne.',
 		items: ['Stratégie de contenu', 'Réseaux sociaux', 'Communication de terrain'],
 		href: '/comm',
+		linkLabel: 'Voir la communication',
 	},
 ];
 

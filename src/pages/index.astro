@@ -139,6 +139,12 @@ const selection = projects.filter((p) => !p.featured).slice(0, 3);
 						</div>
 						<h3 class="mt-6 font-display text-2xl">{service.title}</h3>
 						<p class="mt-3 text-sm text-muted-dark">{service.lead}</p>
+						{service.href && (
+							<a href={service.href} class="link-underline mt-4 inline-flex items-center gap-2 text-sm font-medium text-amber-soft">
+								{service.linkLabel ?? 'Voir mes créations'}
+								<Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+							</a>
+						)}
 					</div>
 				))}
 			</div>

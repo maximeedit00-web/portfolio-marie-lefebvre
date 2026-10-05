@@ -35,7 +35,7 @@ import { services, pricingNote } from '../data/services';
 						</ul>
 						{service.href && (
 							<a href={service.href} class="link-underline mt-6 inline-flex items-center gap-2 text-sm font-medium">
-								Voir mes créations
+								{service.linkLabel ?? 'Voir mes créations'}
 								<Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
 							</a>
 						)}
