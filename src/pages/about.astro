@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import { site } from '../data/site';
 import { introVideoId } from '../data/projects';
+import { pages } from '../data/pages';
 ---
 
 <Base
@@ -11,10 +12,10 @@ import { introVideoId } from '../data/projects';
 	description="Je suis Marie Lefebvre, monteuse vidéo. Diplômée en communication, passionnée de montage, de musique, d’art et de cinéma."
 >
 	<PageHero
-		script="Enchantée !"
+		script={pages.about.hero_script}
 		eyebrow="À propos"
-		title="Je suis Marie, monteuse vidéo."
-		description="Diplômée en communication et passionnée de montage depuis des années, je mets mes services à votre disposition pour faire décoller vos projets."
+		title={pages.about.hero_title}
+		description={pages.about.hero_desc}
 	/>
 
 	<section class="section">
@@ -78,7 +79,7 @@ import { introVideoId } from '../data/projects';
 		<div class="shell relative">
 			<div class="max-w-2xl" data-reveal>
 				<p class="eyebrow">Comment je travaille</p>
-				<h2 class="mt-4 font-display text-4xl md:text-5xl">Simple, humain, soigné.</h2>
+				<h2 class="mt-4 font-display text-4xl md:text-5xl">{pages.about.process_title}</h2>
 			</div>
 			<div class="mt-14 grid gap-10 md:grid-cols-3">
 				<div data-reveal>

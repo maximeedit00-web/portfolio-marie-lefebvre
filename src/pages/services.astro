@@ -3,7 +3,8 @@ import { Icon } from 'astro-icon/components';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import { site } from '../data/site';
-import { services, pricingNote } from '../data/services';
+import { services } from '../data/services';
+import { pages } from '../data/pages';
 ---
 
 <Base
@@ -11,10 +12,10 @@ import { services, pricingNote } from '../data/services';
 	description="Mes prestations : montage vidéo, graphisme et communication. Tarifs sur devis, variables en fonction de la demande."
 >
 	<PageHero
-		script="Ce que je peux faire"
+		script={pages.services.hero_script}
 		eyebrow="Services"
-		title="Du montage, du visuel, de la communication."
-		description="Trois domaines, un seul objectif : donner à votre projet une image soignée et des vidéos qui captent."
+		title={pages.services.hero_title}
+		description={pages.services.hero_desc}
 	/>
 
 	<section class="section">
@@ -49,8 +50,8 @@ import { services, pricingNote } from '../data/services';
 						<Icon name="lucide:receipt" class="size-5" aria-hidden="true" />
 					</span>
 					<div>
-						<p class="font-display text-xl">Tarifs sur devis</p>
-						<p class="mt-1 text-sm text-muted">{pricingNote}</p>
+						<p class="font-display text-xl">{pages.services.pricing_title}</p>
+						<p class="mt-1 text-sm text-muted">{pages.services.pricing_note}</p>
 					</div>
 				</div>
 				<a href="/contact" class="btn btn-dark shrink-0">
@@ -66,9 +67,9 @@ import { services, pricingNote } from '../data/services';
 		<div class="shell relative grid gap-12 lg:grid-cols-2 lg:items-center">
 			<div data-reveal>
 				<p class="eyebrow">Comment ça se passe</p>
-				<h2 class="mt-4 font-display text-3xl md:text-4xl">Simple et direct.</h2>
+				<h2 class="mt-4 font-display text-3xl md:text-4xl">{pages.services.process_title}</h2>
 				<p class="mt-5 max-w-md text-muted-dark">
-					Pas de process compliqué : on parle de votre projet, je monte, on ajuste, je livre.
+					{pages.services.process_text}
 				</p>
 			</div>
 			<ol class="space-y-8" data-reveal="right">
@@ -91,7 +92,7 @@ import { services, pricingNote } from '../data/services';
 	<section class="section">
 		<div class="shell text-center">
 			<h2 class="mx-auto max-w-2xl font-display text-3xl md:text-5xl" data-reveal>
-				Un projet, une question ? Parlons-en.
+				{pages.services.cta_title}
 			</h2>
 			<div class="mt-8 flex flex-wrap justify-center gap-3" data-reveal>
 				<a href={`mailto:${site.email}`} class="btn btn-primary">

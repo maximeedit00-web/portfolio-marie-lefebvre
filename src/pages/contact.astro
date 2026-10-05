@@ -3,6 +3,7 @@ import { Icon } from 'astro-icon/components';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import { site } from '../data/site';
+import { pages } from '../data/pages';
 ---
 
 <Base
@@ -10,10 +11,10 @@ import { site } from '../data/site';
 	description="Contactez Marie Lefebvre pour votre projet de montage vidéo, de graphisme ou de communication."
 >
 	<PageHero
-		script="Travaillons ensemble !"
+		script={pages.contact.hero_script}
 		eyebrow="Contact"
-		title="Parlons de votre projet."
-		description="Le plus simple : un e-mail ou un message. Je vous réponds avec mes disponibilités."
+		title={pages.contact.hero_title}
+		description={pages.contact.hero_desc}
 	/>
 
 	<section class="section">
@@ -87,7 +88,7 @@ import { site } from '../data/site';
 				<div class="halo anim-glow" style="width:16rem;height:16rem;background:var(--color-terracotta);bottom:-6rem;right:-6rem;opacity:0.5"></div>
 				<div class="relative">
 					<p class="eyebrow">Pour démarrer</p>
-					<h2 class="mt-4 font-display text-3xl">Ce dont j’ai besoin.</h2>
+					<h2 class="mt-4 font-display text-3xl">{pages.contact.needs_title}</h2>
 					<ul class="mt-8 space-y-5 text-sm text-muted-dark">
 						<li class="flex gap-4">
 							<Icon name="lucide:check" class="mt-0.5 size-5 shrink-0 text-amber-soft" aria-hidden="true" />
@@ -103,7 +104,7 @@ import { site } from '../data/site';
 						</li>
 					</ul>
 					<p class="mt-8 border-t border-current/10 pt-6 text-sm text-muted-dark">
-						Pas de formulaire à rallonge : un message suffit pour lancer la discussion.
+						{pages.contact.needs_text}
 					</p>
 				</div>
 			</div>

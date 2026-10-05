@@ -1,0 +1,68 @@
+{
+  "services": {
+    "hero_script": "Ce que je peux faire",
+    "hero_title": "Du montage, du visuel, de la communication.",
+    "hero_desc": "Trois domaines, un seul objectif : donner à votre projet une image soignée et des vidéos qui captent.",
+    "pricing_title": "Tarifs sur devis",
+    "pricing_note": "Tarifs sur devis, variables en fonction de la demande.",
+    "process_title": "Simple et direct.",
+    "process_text": "Pas de process compliqué : on parle de votre projet, je monte, on ajuste, je livre.",
+    "cta_title": "Un projet, une question ? Parlons-en."
+  },
+  "graphisme": {
+    "hero_script": "Mes créations",
+    "hero_title": "Miniatures & dessins.",
+    "hero_desc": "Les vignettes de mes vidéos, et ce que je dessine à côté.",
+    "mini_title": "Miniatures",
+    "mini_sub": "Les vignettes de mes vidéos.",
+    "dessin_title": "Dessins & illustrations",
+    "dessin_sub": "Ce que je dessine à côté.",
+    "cta_title": "Besoin d'une miniature ou d'un visuel ?"
+  },
+  "comm": {
+    "hero_script": "Communication",
+    "hero_title": "Affiches & campagnes.",
+    "hero_desc": "Des supports pensés pour faire passer un message, du premier croquis à l'impression.",
+    "affiches_title": "Toutes mes affiches.",
+    "stages_title": "Mes stages.",
+    "stages_text": "J'ai fait mes armes en communication dans deux structures locales, entre création de supports et présence sur le terrain.",
+    "cta_title": "Un projet à communiquer ?"
+  },
+  "avis": {
+    "hero_script": "Témoignages clients",
+    "hero_title": "Ce qu'on dit de mon travail.",
+    "hero_desc": "Les retours de celles et ceux avec qui j'ai collaboré.",
+    "cta_title": "À vous de donner votre avis."
+  },
+  "contact": {
+    "hero_script": "Travaillons ensemble !",
+    "hero_title": "Parlons de votre projet.",
+    "hero_desc": "Le plus simple : un e-mail ou un message. Je vous réponds avec mes disponibilités.",
+    "needs_title": "Ce dont j'ai besoin.",
+    "needs_text": "Pas de formulaire à rallonge : un message suffit pour lancer la discussion."
+  },
+  "about": {
+    "hero_script": "Enchantée !",
+    "hero_title": "Je suis Marie, monteuse vidéo.",
+    "hero_desc": "Diplômée en communication et passionnée de montage depuis des années, je mets mes services à votre disposition pour faire décoller vos projets.",
+    "process_title": "Simple, humain, soigné."
+  },
+  "mentions": {
+    "sections": [
+      { "titre": "Éditeur du site", "texte": "Marie Lefebvre\n[Adresse à compléter]\nE-mail : marie.lefebvre.contact@gmail.com\nSIRET : [à compléter]" },
+      { "titre": "Responsable de la publication", "texte": "Marie Lefebvre." },
+      { "titre": "Hébergement", "texte": "Netlify, Inc. — 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis." },
+      { "titre": "Propriété intellectuelle", "texte": "L'ensemble des contenus du site est protégé par le droit d'auteur et demeure la propriété de Marie Lefebvre et/ou de leurs auteurs. Toute reproduction sans autorisation écrite préalable est interdite." },
+      { "titre": "Données personnelles et cookies", "texte": "Ce site ne dépose aucun cookie de mesure d'audience ou publicitaire et ne comporte pas de formulaire. Voir la politique de confidentialité." }
+    ]
+  },
+  "confidentialite": {
+    "sections": [
+      { "titre": "Responsable du traitement", "texte": "Marie Lefebvre — marie.lefebvre.contact@gmail.com" },
+      { "titre": "Données collectées", "texte": "Ce site ne comporte pas de formulaire et ne collecte aucune donnée à votre insu. Les seules informations traitées sont celles que vous transmettez volontairement par e-mail ou via les réseaux sociaux." },
+      { "titre": "Cookies", "texte": "Ce site n'utilise pas de cookies de suivi, de mesure d'audience ou de publicité." },
+      { "titre": "Vos droits", "texte": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition. Pour l'exercer : marie.lefebvre.contact@gmail.com. Vous pouvez aussi saisir la CNIL (www.cnil.fr)." },
+      { "titre": "Hébergement", "texte": "Netlify, Inc. — 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis." }
+    ]
+  }
+}

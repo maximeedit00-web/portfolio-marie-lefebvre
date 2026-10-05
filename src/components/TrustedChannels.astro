@@ -1,0 +1,54 @@
+---
+import { Icon } from 'astro-icon/components';
+import { clients } from '../data/clients';
+
+interface Props {
+	title?: string;
+	subtitle?: string;
+	class?: string;
+}
+
+const {
+	title = 'Des chaînes m’ont confié leurs montages.',
+	subtitle,
+	class: className = '',
+} = Astro.props;
+
+const list = clients.filter((c) => c.logo || c.name);
+---
+
+{list.length > 0 && (
+	<section class:list={['section', className]}>
+		<div class="shell">
+			<div class="mx-auto max-w-2xl text-center" data-reveal>
+				<p class="eyebrow justify-center">Ils m’ont fait confiance</p>
+				<h2 class="mt-4 font-display text-4xl md:text-5xl">{title}</h2>
+				{subtitle && <p class="mt-5 text-cocoa">{subtitle}</p>}
+			</div>
+
+			<div class="mt-14 grid gap-10 sm:grid-cols-3">
+				{list.map((c, i) => (
+					<a
+						href={c.url || '#'}
+						target={c.url ? '_blank' : undefined}
+						rel={c.url ? 'noopener' : undefined}
+						class="group flex flex-col items-center text-center"
+						data-reveal
+						style={`--reveal-delay:${i * 90}ms`}
+					>
+						<span class="flex size-28 items-center justify-center overflow-hidden rounded-full border border-line bg-cream-50 shadow-[var(--shadow-soft)] transition-transform duration-500 group-hover:scale-105">
+							{c.logo ? (
+								<img src={c.logo} alt={c.name || 'Chaîne'} loading="lazy" decoding="async" class="h-full w-full object-cover" />
+							) : (
+								<Icon name="simple-icons:youtube" class="size-9 text-muted" aria-hidden="true" />
+							)}
+						</span>
+						<span class="mt-5 font-display text-2xl transition-colors group-hover:text-terracotta">
+							{c.name || 'Chaîne'}
+						</span>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+)}

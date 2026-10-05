@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon/components';
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ReviewCard from '../components/ReviewCard.astro';
+import TrustedChannels from '../components/TrustedChannels.astro';
 import { site } from '../data/site';
 import { projects, featuredProject } from '../data/projects';
 import { services } from '../data/services';
@@ -195,6 +196,9 @@ const selection = projects.filter((p) => !p.featured).slice(0, 3);
 			</div>
 		</div>
 	</section>
+
+	<!-- ============================ ILS M'ONT FAIT CONFIANCE ============================ -->
+	<TrustedChannels class="border-t border-line" />
 
 	<!-- ============================ AVIS ============================ -->
 	<section class="section border-y border-line bg-cream-50">

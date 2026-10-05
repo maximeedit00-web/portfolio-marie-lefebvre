@@ -130,8 +130,116 @@ collections:
             hint: "Glisse-dépose un avis pour changer son ordre."
             fields:
               - { label: "Nom", name: "author", widget: "string", required: false }
-              - { label: "Photo (optionnel)", name: "avatar", widget: "image", required: false, hint: "La photo s'affiche à côté de l'avis" }
               - { label: "Lien de la chaîne / du profil (optionnel)", name: "url", widget: "string", required: false, hint: "Ex. https://youtube.com/@... — le nom de la personne deviendra cliquable" }
               - { label: "Contexte", name: "role", widget: "string", required: false }
               - { label: "Note (1 à 5)", name: "rating", widget: "number", min: 1, max: 5, default: 5 }
               - { label: "Texte", name: "text", widget: "text" }
+
+  - name: clients
+    label: "7. Ils m'ont fait confiance"
+    files:
+      - name: clients
+        label: "Chaînes"
+        file: "content/clients.json"
+        fields:
+          - label: "Chaînes"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}}"
+            hint: "Les logos/chaînes affichés en grand sur le site. Glisse-dépose pour changer l'ordre."
+            fields:
+              - { label: "Nom de la chaîne", name: "name", widget: "string", required: false }
+              - { label: "Logo / photo de profil", name: "logo", widget: "image" }
+              - { label: "Lien de la chaîne", name: "url", widget: "string", required: false, hint: "Ex. https://youtube.com/@..." }
+
+  - name: pages
+    label: "8. Pages du site"
+    files:
+      - name: pages
+        label: "Textes de chaque page"
+        file: "content/pages.json"
+        fields:
+          - label: "Services"
+            name: "services"
+            widget: "object"
+            fields:
+              - { label: "Petit mot (manuscrit)", name: "hero_script", widget: "string" }
+              - { label: "Titre", name: "hero_title", widget: "string" }
+              - { label: "Description", name: "hero_desc", widget: "text" }
+              - { label: "Tarifs — titre", name: "pricing_title", widget: "string" }
+              - { label: "Tarifs — texte", name: "pricing_note", widget: "text" }
+              - { label: "Process — titre", name: "process_title", widget: "string" }
+              - { label: "Process — texte", name: "process_text", widget: "text" }
+              - { label: "Bouton final", name: "cta_title", widget: "string" }
+          - label: "Graphisme"
+            name: "graphisme"
+            widget: "object"
+            fields:
+              - { label: "Petit mot (manuscrit)", name: "hero_script", widget: "string" }
+              - { label: "Titre", name: "hero_title", widget: "string" }
+              - { label: "Description", name: "hero_desc", widget: "text" }
+              - { label: "Section Miniatures — titre", name: "mini_title", widget: "string" }
+              - { label: "Section Miniatures — sous-titre", name: "mini_sub", widget: "string" }
+              - { label: "Section Dessins — titre", name: "dessin_title", widget: "string" }
+              - { label: "Section Dessins — sous-titre", name: "dessin_sub", widget: "string" }
+              - { label: "Bouton final", name: "cta_title", widget: "string" }
+          - label: "Comm"
+            name: "comm"
+            widget: "object"
+            fields:
+              - { label: "Petit mot (manuscrit)", name: "hero_script", widget: "string" }
+              - { label: "Titre", name: "hero_title", widget: "string" }
+              - { label: "Description", name: "hero_desc", widget: "text" }
+              - { label: "Titre page affiches", name: "affiches_title", widget: "string" }
+              - { label: "Titre stages", name: "stages_title", widget: "string" }
+              - { label: "Texte stages", name: "stages_text", widget: "text" }
+              - { label: "Bouton final", name: "cta_title", widget: "string" }
+          - label: "Avis"
+            name: "avis"
+            widget: "object"
+            fields:
+              - { label: "Petit mot (manuscrit)", name: "hero_script", widget: "string" }
+              - { label: "Titre", name: "hero_title", widget: "string" }
+              - { label: "Description", name: "hero_desc", widget: "text" }
+              - { label: "Bouton final", name: "cta_title", widget: "string" }
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Petit mot (manuscrit)", name: "hero_script", widget: "string" }
+              - { label: "Titre", name: "hero_title", widget: "string" }
+              - { label: "Description", name: "hero_desc", widget: "text" }
+              - { label: "Encart « Ce dont j'ai besoin » — titre", name: "needs_title", widget: "string" }
+              - { label: "Encart — texte", name: "needs_text", widget: "text" }
+          - label: "À propos"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Petit mot (manuscrit)", name: "hero_script", widget: "string" }
+              - { label: "Titre", name: "hero_title", widget: "string" }
+              - { label: "Description", name: "hero_desc", widget: "text" }
+              - { label: "Process — titre", name: "process_title", widget: "string" }
+          - label: "Mentions légales"
+            name: "mentions"
+            widget: "object"
+            fields:
+              - label: "Sections"
+                name: "sections"
+                widget: "list"
+                summary: "{{fields.titre}}"
+                hint: "Une ligne = un paragraphe."
+                fields:
+                  - { label: "Titre", name: "titre", widget: "string" }
+                  - { label: "Texte", name: "texte", widget: "text" }
+          - label: "Politique de confidentialité"
+            name: "confidentialite"
+            widget: "object"
+            fields:
+              - label: "Sections"
+                name: "sections"
+                widget: "list"
+                summary: "{{fields.titre}}"
+                hint: "Une ligne = un paragraphe."
+                fields:
+                  - { label: "Titre", name: "titre", widget: "string" }
+                  - { label: "Texte", name: "texte", widget: "text" }
