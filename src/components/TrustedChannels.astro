@@ -14,7 +14,15 @@ const {
 	class: className = '',
 } = Astro.props;
 
-const list = clients.filter((c) => c.logo || c.name);
+const list = clients
+	.map((c) => {
+		const logo =
+			c.logo && (/\.(png|jpe?g|webp|gif|svg)(\?.*)?$/i.test(c.logo) || c.logo.startsWith('/media'))
+				? c.logo
+				: undefined;
+		return { ...c, logo };
+	})
+	.filter((c) => c.logo || c.name);
 ---
 
 {list.length > 0 && (
