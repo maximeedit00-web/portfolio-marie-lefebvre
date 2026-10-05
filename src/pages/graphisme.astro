@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { miniatures, dessins, type Graphic } from '../data/graphics';
+
+const cartes: { titre: string; sous: string; items: Graphic[]; ratio: string; contain: boolean }[] = [
+	{ titre: 'Miniatures', sous: 'Les vignettes de mes vidéos.', items: miniatures, ratio: 'aspect-video', contain: false },
+	{ titre: 'Dessins', sous: 'Quelques dessins et peintures.', items: dessins, ratio: 'aspect-[4/5]', contain: true },
+];
+---
+
+<Base
+	title="Graphisme"
+	description="Mes créations graphiques : miniatures YouTube, dessins et peintures."
+>
+	<PageHero
+		script="Mes créations"
+		eyebrow="Graphisme"
+		title="Miniatures & dessins."
+		description="Les vignettes de mes vidéos, et ce que je dessine à côté."
+	/>
+
+	{cartes.map((carte, ci) => (
+		<section class:list={['section', ci > 0 && 'border-t border-line bg-cream-50']}>
+			<div class="shell">
+				<div class="max-w-2xl" data-reveal>
+					<p class="eyebrow">{carte.titre}</p>
+					<h2 class="mt-4 font-display text-4xl md:text-5xl">{carte.sous}</h2>
+				</div>
+
+				<div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+					{carte.items.map((g, i) => (
+						<figure class="group" data-reveal style={`--reveal-delay:${(i % 3) * 70}ms`}>
+							<div class:list={['card-media relative', carte.ratio, carte.contain && 'bg-white']}>
+								<Image
+									src={g.image}
+									alt={`${g.title}, ${g.description}`}
+									widths={carte.contain ? [400, 600, 760] : [520, 860, 1100]}
+									sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+									loading="lazy"
+									class:list={['h-full w-full', carte.contain ? 'object-contain' : 'object-cover']}
+								/>
+								<div class="card-sheen"></div>
+							</div>
+							<figcaption class="mt-3">
+								<h3 class="font-display text-lg">{g.title}</h3>
+								<p class="text-sm text-muted">{g.description}</p>
+							</figcaption>
+						</figure>
+					))}
+				</div>
+			</div>
+		</section>
+	))}
+
+	<section class="on-forest grain relative overflow-hidden section">
+		<div class="halo anim-glow" style="width:30rem;height:30rem;background:var(--color-terracotta);bottom:-12rem;right:-8rem;opacity:0.4"></div>
+		<div class="shell relative text-center">
+			<h2 class="mx-auto max-w-2xl font-display text-3xl md:text-5xl" data-reveal>
+				Besoin d’une miniature ou d’un visuel ?
+			</h2>
+			<div class="mt-8 flex flex-wrap justify-center gap-3" data-reveal>
+				<a href="/contact" class="btn btn-primary">
+					Me contacter
+					<Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+				</a>
+				<a href="/comm" class="btn btn-ghost">Voir mes affiches</a>
+			</div>
+		</div>
+	</section>
+</Base>

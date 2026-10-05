@@ -1,0 +1,25 @@
+---
+import { Icon } from 'astro-icon/components';
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base title="Page introuvable" description="Cette page n'existe pas.">
+	<section class="on-dark grain relative flex min-h-screen items-center overflow-hidden">
+		<div class="halo anim-glow" style="width:32rem;height:32rem;background:var(--color-terracotta);top:-8rem;right:-10rem;opacity:0.45"></div>
+		<div class="shell relative text-center">
+			<p class="eyebrow justify-center">Erreur 404</p>
+			<h1 class="mt-6 font-display" style="font-size:clamp(3rem,10vw,7rem)">Page introuvable.</h1>
+			<p class="mx-auto mt-6 max-w-md text-muted-dark">
+				Cette page n’existe pas ou a été déplacée. Revenons à l’essentiel.
+			</p>
+			<div class="mt-10 flex flex-wrap justify-center gap-3">
+				<a href="/" class="btn btn-primary">
+					Retour à l’accueil
+					<Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+				</a>
+				<a href="/work" class="btn btn-ghost">Voir mes projets</a>
+			</div>
+		</div>
+	</section>
+</Base>

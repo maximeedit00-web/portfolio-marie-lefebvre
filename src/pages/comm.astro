@@ -1,0 +1,88 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { affiches } from '../data/affiches';
+import { site } from '../data/site';
+---
+
+<Base
+	title="Comm"
+	description="Mes travaux de communication : affiches et supports réalisés en stage et sur le terrain."
+>
+	<PageHero
+		script="Communication"
+		eyebrow="Comm"
+		title="Affiches & campagnes."
+		description="Des supports pensés pour faire passer un message, du premier croquis à l’impression."
+	/>
+
+	<section class="section">
+		<div class="shell">
+			<div class="max-w-2xl" data-reveal>
+				<p class="eyebrow">Affiches</p>
+				<h2 class="mt-4 font-display text-4xl md:text-5xl">Toutes mes affiches.</h2>
+			</div>
+			<div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				{affiches.map((a, i) => (
+					<figure class="group" data-reveal style={`--reveal-delay:${(i % 3) * 70}ms`}>
+						<div class="card-media relative aspect-[3/4] bg-white">
+							<Image
+								src={a.image}
+								alt={`${a.title}, ${a.description}`}
+								widths={[400, 600, 800]}
+								sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+								loading="lazy"
+								class="h-full w-full object-contain"
+							/>
+							<div class="card-sheen"></div>
+						</div>
+						<figcaption class="mt-3">
+							<h3 class="font-display text-lg">{a.title}</h3>
+							<p class="text-sm text-muted">{a.description}</p>
+						</figcaption>
+					</figure>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section border-t border-line bg-cream-50">
+		<div class="shell grid gap-12 lg:grid-cols-2 lg:items-center">
+			<div data-reveal>
+				<p class="eyebrow">Sur le terrain</p>
+				<h2 class="mt-4 font-display text-4xl md:text-5xl">Mes stages.</h2>
+				<p class="mt-5 max-w-md text-cocoa">
+					J’ai fait mes armes en communication dans deux structures locales, entre création de
+					supports et présence sur le terrain.
+				</p>
+			</div>
+			<dl class="grid gap-6" data-reveal="right">
+				<div class="rounded-[var(--radius-card)] border border-line bg-cream p-6">
+					<dt class="font-display text-xl">Stage en mairie</dt>
+					<dd class="mt-2 text-sm text-muted">Communication et supports pour une collectivité.</dd>
+				</div>
+				<div class="rounded-[var(--radius-card)] border border-line bg-cream p-6">
+					<dt class="font-display text-xl">Stage en association</dt>
+					<dd class="mt-2 text-sm text-muted">Communication d’un projet associatif et événementiel.</dd>
+				</div>
+			</dl>
+		</div>
+	</section>
+
+	<section class="on-forest grain relative overflow-hidden section">
+		<div class="halo anim-glow" style="width:30rem;height:30rem;background:var(--color-terracotta);bottom:-12rem;left:-8rem;opacity:0.4"></div>
+		<div class="shell relative text-center">
+			<h2 class="mx-auto max-w-2xl font-display text-3xl md:text-5xl" data-reveal>
+				Un projet à communiquer ?
+			</h2>
+			<div class="mt-8 flex flex-wrap justify-center gap-3" data-reveal>
+				<a href={`mailto:${site.email}`} class="btn btn-primary">
+					<Icon name="lucide:mail" class="size-4" aria-hidden="true" /> Écrire un e-mail
+				</a>
+				<a href="/graphisme" class="btn btn-ghost">Voir le graphisme</a>
+			</div>
+		</div>
+	</section>
+</Base>

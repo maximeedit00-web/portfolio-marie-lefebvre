@@ -1,0 +1,93 @@
+---
+import { Icon } from 'astro-icon/components';
+import Base from '../../layouts/Base.astro';
+import { projects } from '../../data/projects';
+
+export function getStaticPaths() {
+	return projects.map((project, index) => ({
+		params: { slug: project.slug },
+		props: { project, index },
+	}));
+}
+
+const { project, index } = Astro.props;
+const next = projects[(index + 1) % projects.length];
+const isVertical = project.orientation === 'vertical';
+const hasFile = !!project.videoFile;
+const hasYt = !!project.videoId;
+const ytUrl = hasYt ? `https://www.youtube.com/watch?v=${project.videoId}` : null;
+const trigger = hasFile
+	? { 'data-video-file': project.videoFile }
+	: { 'data-youtube': project.videoId, 'data-youtube-title': project.title };
+---
+
+<Base title={project.title} description={project.description}>
+	<section class="on-dark grain relative overflow-hidden pb-14 pt-32 md:pb-20 md:pt-44">
+		<div class="halo anim-glow" style="width:28rem;height:28rem;background:var(--color-terracotta);top:-10rem;right:-8rem;opacity:0.45"></div>
+		<div class="shell relative">
+			<a href="/work" class="link-underline inline-flex items-center gap-2 text-sm text-muted-dark transition-colors hover:text-amber-soft">
+				<Icon name="lucide:arrow-left" class="size-4" aria-hidden="true" /> Tous les montages
+			</a>
+			<p class="eyebrow mt-8">{project.category}</p>
+			<h1 class="mt-5 font-display leading-[1.03]" style="font-size:clamp(2rem,5vw,3.6rem)">{project.title}</h1>
+			<div class="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm text-muted-dark">
+				{project.channel && <span>{project.channel}</span>}
+				<span>Format {project.format}</span>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="shell">
+			<div class:list={['group relative', isVertical ? 'mx-auto max-w-sm' : '']}>
+				<div class:list={['card-media relative', isVertical ? 'aspect-[9/16]' : 'aspect-video']}>
+					<img
+						src={project.poster}
+						alt={`${project.title}${project.channel ? `, montage de ${project.channel}` : ''}`}
+						loading="eager"
+						decoding="async"
+						class="h-full w-full object-cover"
+					/>
+					<div class="card-sheen"></div>
+					<div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/55 to-transparent"></div>
+					<button
+						type="button"
+						{...trigger}
+						class="absolute left-1/2 top-1/2 z-20 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-cream/90 text-ink opacity-0 shadow-[var(--shadow-glow)] transition duration-500 hover:bg-amber focus-visible:opacity-100 group-hover:opacity-100 md:size-20"
+						aria-label={`Lire la vidéo : ${project.title}`}
+					>
+						<Icon name="lucide:play" class="size-7 translate-x-[2px]" aria-hidden="true" />
+					</button>
+				</div>
+			</div>
+
+			<div class="mx-auto mt-12 flex max-w-2xl flex-col items-center text-center">
+				<p class="text-lg text-cocoa" data-reveal>{project.description}</p>
+				<div class="mt-8 flex flex-wrap justify-center gap-3" data-reveal>
+					<button type="button" {...trigger} class="btn btn-primary">
+						<Icon name="lucide:play" class="size-4" aria-hidden="true" /> Lire la vidéo
+					</button>
+					{ytUrl && (
+						<a href={ytUrl} target="_blank" rel="noopener" class="btn btn-ghost">
+							<Icon name="simple-icons:youtube" class="size-4" aria-hidden="true" /> Voir sur YouTube
+						</a>
+					)}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="border-t border-line">
+		<div class="shell">
+			<a href={`/work/${next.slug}`} class="group flex flex-wrap items-center justify-between gap-6 py-14">
+				<div>
+					<p class="eyebrow">Projet suivant</p>
+					<p class="mt-4 font-display text-3xl transition-colors group-hover:text-terracotta md:text-4xl">{next.title}</p>
+				</div>
+				<span class="flex size-14 shrink-0 items-center justify-center rounded-full border border-line transition-all duration-500 group-hover:border-terracotta group-hover:bg-terracotta group-hover:text-cream-50">
+					<Icon name="lucide:arrow-right" class="size-6" aria-hidden="true" />
+				</span>
+			</a>
+		</div>
+	</section>
+</Base>

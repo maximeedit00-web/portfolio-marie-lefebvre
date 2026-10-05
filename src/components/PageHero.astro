@@ -1,0 +1,28 @@
+---
+interface Props {
+	eyebrow: string;
+	title: string;
+	description?: string;
+	/** Mot manuscrit affiché au-dessus du titre (facultatif). */
+	script?: string;
+}
+
+const { eyebrow, title, description, script } = Astro.props;
+---
+
+<section class="on-forest grain relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-44">
+	<div class="halo anim-glow" style="width:30rem;height:30rem;background:var(--color-terracotta);top:-10rem;right:-8rem;opacity:0.45"></div>
+	<div class="halo anim-drift" style="width:20rem;height:20rem;background:var(--color-amber);bottom:-8rem;left:-6rem;opacity:0.3"></div>
+	<div class="shell relative max-w-3xl">
+		{script && <p class="script load-rise text-3xl text-amber-soft md:text-4xl">{script}</p>}
+		<p class="eyebrow load-rise" style={script ? 'animation-delay:0.1s' : undefined}>{eyebrow}</p>
+		<h1 class="load-rise mt-6 font-display leading-[1.02]" style="font-size:clamp(2.4rem,6vw,4.25rem);animation-delay:0.15s">
+			{title}
+		</h1>
+		{description && (
+			<p class="load-rise mt-6 max-w-xl text-lg text-muted-dark" style="animation-delay:0.3s">
+				{description}
+			</p>
+		)}
+	</div>
+</section>

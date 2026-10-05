@@ -1,0 +1,65 @@
+---
+import '../styles/global.css';
+import type { ImageMetadata } from 'astro';
+import { Font } from 'astro:assets';
+import { site } from '../data/site';
+import ogDefault from '../assets/marie/projects/endium-paladium.jpg';
+
+interface Props {
+	title: string;
+	description: string;
+	image?: ImageMetadata;
+}
+
+const { title, description, image = ogDefault } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image.src, Astro.url);
+const fullTitle = title === site.name ? `${site.name} · ${site.role}` : `${title} · ${site.name}`;
+
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: site.name,
+	jobTitle: site.role,
+	description: site.description,
+	email: site.email,
+	url: Astro.site?.href,
+	image: new URL(ogDefault.src, Astro.url).href,
+	sameAs: [site.instagram.url],
+};
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#1c1712" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta name="generator" content={Astro.generator} />
+
+<Font cssVariable="--font-fraunces" preload />
+<Font cssVariable="--font-inter" preload />
+<Font cssVariable="--font-script" preload />
+
+<link rel="canonical" href={canonical} />
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content="fr_FR" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

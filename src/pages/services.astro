@@ -1,0 +1,104 @@
+---
+import { Icon } from 'astro-icon/components';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../data/site';
+import { services, pricingNote } from '../data/services';
+---
+
+<Base
+	title="Services"
+	description="Mes prestations : montage vidéo, graphisme et communication. Tarifs sur devis, variables en fonction de la demande."
+>
+	<PageHero
+		script="Ce que je peux faire"
+		eyebrow="Services"
+		title="Du montage, du visuel, de la communication."
+		description="Trois domaines, un seul objectif : donner à votre projet une image soignée et des vidéos qui captent."
+	/>
+
+	<section class="section">
+		<div class="shell">
+			<div class="grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-line bg-line lg:grid-cols-3">
+				{services.map((service, i) => (
+					<div class="relative bg-cream p-8 md:p-10" data-reveal="fade" style={`--reveal-delay:${i * 80}ms`}>
+						<span class="font-display text-sm text-terracotta">0{i + 1}</span>
+						<div class="mt-6 flex size-14 items-center justify-center rounded-full bg-ink text-amber-soft">
+							<Icon name={service.icon} class="size-6" aria-hidden="true" />
+						</div>
+						<h2 class="mt-7 font-display text-2xl md:text-3xl">{service.title}</h2>
+						<p class="mt-4 text-cocoa">{service.lead}</p>
+						<ul class="mt-6 flex flex-wrap gap-2">
+							{service.items.map((item) => (
+								<li class="tag">{item}</li>
+							))}
+						</ul>
+						{service.href && (
+							<a href={service.href} class="link-underline mt-6 inline-flex items-center gap-2 text-sm font-medium">
+								Voir mes créations
+								<Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+							</a>
+						)}
+					</div>
+				))}
+			</div>
+
+			<div class="mt-12 flex flex-col items-start justify-between gap-6 rounded-[var(--radius-card)] border border-line bg-cream-50 p-8 md:flex-row md:items-center md:p-10" data-reveal>
+				<div class="flex items-center gap-5">
+					<span class="flex size-12 items-center justify-center rounded-full bg-terracotta text-cream-50">
+						<Icon name="lucide:receipt" class="size-5" aria-hidden="true" />
+					</span>
+					<div>
+						<p class="font-display text-xl">Tarifs sur devis</p>
+						<p class="mt-1 text-sm text-muted">{pricingNote}</p>
+					</div>
+				</div>
+				<a href="/contact" class="btn btn-dark shrink-0">
+					Demander un devis
+					<Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="on-forest grain relative overflow-hidden section">
+		<div class="halo anim-glow" style="width:30rem;height:30rem;background:var(--color-terracotta);bottom:-12rem;left:-8rem;opacity:0.4"></div>
+		<div class="shell relative grid gap-12 lg:grid-cols-2 lg:items-center">
+			<div data-reveal>
+				<p class="eyebrow">Comment ça se passe</p>
+				<h2 class="mt-4 font-display text-3xl md:text-4xl">Simple et direct.</h2>
+				<p class="mt-5 max-w-md text-muted-dark">
+					Pas de process compliqué : on parle de votre projet, je monte, on ajuste, je livre.
+				</p>
+			</div>
+			<ol class="space-y-8" data-reveal="right">
+				<li class="flex gap-5">
+					<span class="flex size-10 shrink-0 items-center justify-center rounded-full border border-current/25 font-display">1</span>
+					<p class="text-muted-dark"><span class="font-medium text-cream-100">Vous m’expliquez votre projet.</span> Le brief, les rushes et l’objectif de la vidéo.</p>
+				</li>
+				<li class="flex gap-5">
+					<span class="flex size-10 shrink-0 items-center justify-center rounded-full border border-current/25 font-display">2</span>
+					<p class="text-muted-dark"><span class="font-medium text-cream-100">Je monte.</span> Sélection, rythme, narration, habillage, jusqu’à une première version.</p>
+				</li>
+				<li class="flex gap-5">
+					<span class="flex size-10 shrink-0 items-center justify-center rounded-full border border-current/25 font-display">3</span>
+					<p class="text-muted-dark"><span class="font-medium text-cream-100">On ajuste, puis je livre.</span> Vos retours, une dernière passe, et c’est prêt.</p>
+				</li>
+			</ol>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="shell text-center">
+			<h2 class="mx-auto max-w-2xl font-display text-3xl md:text-5xl" data-reveal>
+				Un projet, une question ? Parlons-en.
+			</h2>
+			<div class="mt-8 flex flex-wrap justify-center gap-3" data-reveal>
+				<a href={`mailto:${site.email}`} class="btn btn-primary">
+					<Icon name="lucide:mail" class="size-4" aria-hidden="true" /> Écrire un e-mail
+				</a>
+				<a href="/contact" class="btn btn-ghost">Page contact</a>
+			</div>
+		</div>
+	</section>
+</Base>

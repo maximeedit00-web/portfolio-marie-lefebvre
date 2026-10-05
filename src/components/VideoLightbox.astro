@@ -1,0 +1,146 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<div
+	id="vlightbox"
+	class="fixed inset-0 z-[100] flex items-center justify-center bg-ink/92 opacity-0 pointer-events-none transition-opacity duration-300"
+	role="dialog"
+	aria-modal="true"
+	aria-label="Lecteur vidéo"
+	aria-hidden="true"
+	inert
+>
+	<button
+		type="button"
+		data-close-lightbox
+		class="absolute right-4 top-4 z-10 flex size-12 items-center justify-center rounded-full border border-cream/25 text-cream-100 transition-colors hover:border-amber-soft hover:text-amber-soft md:right-8 md:top-8"
+		aria-label="Fermer la vidéo"
+	>
+		<Icon name="lucide:x" class="size-6" aria-hidden="true" />
+	</button>
+
+	<div class="lightbox-stage relative w-full max-w-[94vw] md:max-w-5xl" data-close-lightbox>
+		<div id="vlightbox-frame-wrap" class="relative mx-auto aspect-video w-full overflow-hidden rounded-2xl bg-black shadow-[var(--shadow-soft)]">
+			<iframe
+				id="vlightbox-frame"
+				title="Lecteur vidéo"
+				class="absolute inset-0 h-full w-full border-0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				allowfullscreen
+				referrerpolicy="strict-origin-when-cross-origin"
+			></iframe>
+		</div>
+		<video
+			id="vlightbox-video"
+			class="mx-auto hidden max-h-[82vh] w-auto max-w-full rounded-2xl bg-black shadow-[var(--shadow-soft)]"
+			controls
+			playsinline
+			preload="none"
+		></video>
+		<p class="mt-4 text-center text-sm text-muted-dark" data-close-lightbox>
+			Cliquez en dehors de la vidéo ou appuyez sur <kbd class="rounded border border-current/30 px-1.5 py-0.5 text-xs">Échap</kbd> pour fermer.
+		</p>
+	</div>
+</div>
+
+<style>
+	#vlightbox.is-open { opacity: 1; pointer-events: auto; }
+	#vlightbox .lightbox-stage {
+		transform: scale(0.94);
+		opacity: 0;
+		transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+	}
+	#vlightbox.is-open .lightbox-stage { transform: scale(1); opacity: 1; }
+	kbd { font-family: inherit; }
+	@media (prefers-reduced-motion: reduce) {
+		#vlightbox .lightbox-stage { transform: none; opacity: 1; }
+	}
+</style>
+
+<script>
+	const $ = (id: string) => document.getElementById(id);
+
+	function openLightbox() {
+		const lb = $('vlightbox') as HTMLElement | null;
+		if (!lb) return;
+		lb.classList.add('is-open');
+		lb.setAttribute('aria-hidden', 'false');
+		lb.removeAttribute('inert');
+		document.documentElement.style.overflow = 'hidden';
+		const close = lb.querySelector<HTMLElement>('[data-close-lightbox]');
+		close && close.focus();
+	}
+
+	function openYoutube(id: string, title?: string | null) {
+		const wrap = $('vlightbox-frame-wrap') as HTMLElement;
+		const frame = $('vlightbox-frame') as HTMLIFrameElement;
+		const video = $('vlightbox-video') as HTMLVideoElement;
+		video.pause();
+		video.classList.add('hidden');
+		wrap.classList.remove('hidden');
+		frame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+		if (title) frame.title = title;
+		openLightbox();
+	}
+
+	function openFile(url: string) {
+		const wrap = $('vlightbox-frame-wrap') as HTMLElement;
+		const frame = $('vlightbox-frame') as HTMLIFrameElement;
+		const video = $('vlightbox-video') as HTMLVideoElement;
+		frame.removeAttribute('src');
+		wrap.classList.add('hidden');
+		video.classList.remove('hidden');
+		video.src = url;
+		openLightbox();
+		const p = video.play();
+		if (p && typeof p.catch === 'function') p.catch(() => {});
+	}
+
+	function closeVideo() {
+		const lb = $('vlightbox') as HTMLElement | null;
+		const frame = $('vlightbox-frame') as HTMLIFrameElement;
+		const video = $('vlightbox-video') as HTMLVideoElement;
+		frame.removeAttribute('src');
+		if (video) {
+			video.pause();
+			video.removeAttribute('src');
+			video.load();
+			video.classList.add('hidden');
+		}
+		($('vlightbox-frame-wrap') as HTMLElement)?.classList.remove('hidden');
+		if (lb) {
+			lb.classList.remove('is-open');
+			lb.setAttribute('aria-hidden', 'true');
+			lb.setAttribute('inert', '');
+		}
+		document.documentElement.style.overflow = '';
+	}
+
+	if (!(window as any).__vlightboxInit) {
+		(window as any).__vlightboxInit = true;
+
+		document.addEventListener('click', (e) => {
+			const target = e.target as HTMLElement;
+			const yt = target.closest('[data-youtube]') as HTMLElement | null;
+			if (yt) {
+				e.preventDefault();
+				openYoutube(yt.getAttribute('data-youtube') || '', yt.getAttribute('data-youtube-title'));
+				return;
+			}
+			const file = target.closest('[data-video-file]') as HTMLElement | null;
+			if (file) {
+				e.preventDefault();
+				openFile(file.getAttribute('data-video-file') || '');
+				return;
+			}
+			if (target.closest('#vlightbox') && !target.closest('.aspect-video') && !target.closest('video')) {
+				closeVideo();
+			}
+		});
+
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') closeVideo();
+		});
+	}
+</script>

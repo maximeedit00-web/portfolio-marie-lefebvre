@@ -1,0 +1,136 @@
+---
+import { Icon } from 'astro-icon/components';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../data/site';
+---
+
+<Base
+	title="Contact"
+	description="Contactez Marie Lefebvre pour votre projet de montage vidéo, de graphisme ou de communication."
+>
+	<PageHero
+		script="Travaillons ensemble !"
+		eyebrow="Contact"
+		title="Parlons de votre projet."
+		description="Le plus simple : un e-mail ou un message. Je vous réponds avec mes disponibilités."
+	/>
+
+	<section class="section">
+		<div class="shell grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+			<div>
+				<div class="space-y-4">
+					<a
+						href={`mailto:${site.email}`}
+						class="group flex items-center justify-between gap-6 rounded-[var(--radius-card)] border border-line bg-cream-50 p-6 transition-colors duration-500 hover:border-terracotta md:p-8"
+						data-reveal
+					>
+						<span class="flex items-center gap-5">
+							<span class="flex size-12 items-center justify-center rounded-full bg-ink text-amber-soft">
+								<Icon name="lucide:mail" class="size-5" aria-hidden="true" />
+							</span>
+							<span class="min-w-0">
+								<span class="block text-xs uppercase tracking-[0.18em] text-muted">Le plus direct</span>
+								<span class="mt-1 block break-all font-display text-xl md:text-2xl">{site.email}</span>
+							</span>
+						</span>
+						<Icon name="lucide:arrow-up-right" class="size-6 shrink-0 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true" />
+					</a>
+
+					<a
+						href={site.instagram.url}
+						target="_blank"
+						rel="noopener"
+						class="group flex items-center justify-between gap-6 rounded-[var(--radius-card)] border border-line bg-cream-50 p-6 transition-colors duration-500 hover:border-terracotta md:p-8"
+						data-reveal
+						style="--reveal-delay:80ms"
+					>
+						<span class="flex items-center gap-5">
+							<span class="flex size-12 items-center justify-center rounded-full bg-ink text-amber-soft">
+								<Icon name="simple-icons:instagram" class="size-5" aria-hidden="true" />
+							</span>
+							<span>
+								<span class="block text-xs uppercase tracking-[0.18em] text-muted">Sur Instagram</span>
+								<span class="mt-1 block font-display text-xl md:text-2xl">@{site.instagram.handle}</span>
+							</span>
+						</span>
+						<Icon name="lucide:arrow-up-right" class="size-6 shrink-0 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true" />
+					</a>
+
+					<div
+						class="flex items-center justify-between gap-6 rounded-[var(--radius-card)] border border-line bg-cream-50 p-6 md:p-8"
+						data-reveal
+						style="--reveal-delay:160ms"
+					>
+						<span class="flex items-center gap-5">
+							<span class="flex size-12 items-center justify-center rounded-full bg-ink text-amber-soft">
+								<Icon name="simple-icons:discord" class="size-5" aria-hidden="true" />
+							</span>
+							<span>
+								<span class="block text-xs uppercase tracking-[0.18em] text-muted">Sur Discord</span>
+								<span class="mt-1 block font-display text-xl md:text-2xl">{site.discord.handle}</span>
+							</span>
+						</span>
+						<button
+							type="button"
+							data-copy={site.discord.handle}
+							class="flex items-center gap-2 rounded-full border border-line px-4 py-2 text-xs font-medium transition-colors hover:border-terracotta hover:text-terracotta"
+						>
+							<Icon name="lucide:copy" class="size-3.5" aria-hidden="true" />
+							<span data-copy-label>Copier</span>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="on-dark grain relative overflow-hidden rounded-[var(--radius-card)] p-8 md:p-10" data-reveal="right">
+				<div class="halo anim-glow" style="width:16rem;height:16rem;background:var(--color-terracotta);bottom:-6rem;right:-6rem;opacity:0.5"></div>
+				<div class="relative">
+					<p class="eyebrow">Pour démarrer</p>
+					<h2 class="mt-4 font-display text-3xl">Ce dont j’ai besoin.</h2>
+					<ul class="mt-8 space-y-5 text-sm text-muted-dark">
+						<li class="flex gap-4">
+							<Icon name="lucide:check" class="mt-0.5 size-5 shrink-0 text-amber-soft" aria-hidden="true" />
+							<span>Le type de vidéo (short, montage long, habillage…).</span>
+						</li>
+						<li class="flex gap-4">
+							<Icon name="lucide:check" class="mt-0.5 size-5 shrink-0 text-amber-soft" aria-hidden="true" />
+							<span>Vos rushes et le résultat attendu.</span>
+						</li>
+						<li class="flex gap-4">
+							<Icon name="lucide:check" class="mt-0.5 size-5 shrink-0 text-amber-soft" aria-hidden="true" />
+							<span>Le format et la deadline, si vous en avez une.</span>
+						</li>
+					</ul>
+					<p class="mt-8 border-t border-current/10 pt-6 text-sm text-muted-dark">
+						Pas de formulaire à rallonge : un message suffit pour lancer la discussion.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</Base>
+
+<script>
+	if (!(window as any).__copyInit) {
+		(window as any).__copyInit = true;
+		document.addEventListener('click', async (e) => {
+			const btn = (e.target as HTMLElement).closest('[data-copy]') as HTMLElement | null;
+			if (!btn) return;
+			const label = btn.querySelector('[data-copy-label]');
+			const value = btn.getAttribute('data-copy') || '';
+			try {
+				await navigator.clipboard.writeText(value);
+				if (label) {
+					const original = label.textContent;
+					label.textContent = 'Copié !';
+					setTimeout(() => {
+						label.textContent = original;
+					}, 2000);
+				}
+			} catch {
+				/* presse-papiers indisponible : on ne fait rien */
+			}
+		});
+	}
+</script>

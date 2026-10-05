@@ -1,0 +1,243 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import { site } from '../data/site';
+import { projects, featuredProject } from '../data/projects';
+import { services } from '../data/services';
+import { reviews } from '../data/reviews';
+import portrait from '../assets/marie/portrait.png';
+
+const selection = projects.filter((p) => !p.featured).slice(0, 3);
+---
+
+<Base
+	title={site.name}
+	description={site.description}
+>
+	<!-- ============================ HERO ============================ -->
+	<section class="on-dark grain relative overflow-hidden pb-20 pt-32 md:pb-28 md:pt-44">
+		<div class="halo anim-glow" style="width:38rem;height:38rem;background:var(--color-terracotta);top:-12rem;right:-10rem;opacity:0.55"></div>
+		<div class="halo anim-drift" style="width:26rem;height:26rem;background:var(--color-amber);bottom:-12rem;left:-8rem;opacity:0.3"></div>
+
+		<div class="shell relative grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+			<div>
+				<p class="script load-rise text-4xl text-amber-soft md:text-5xl">{site.texts.heroScript}</p>
+				<h1 class="mt-2 font-display leading-[1.0]" style="font-size:clamp(2.6rem,7vw,4.9rem)">
+					<span class="line-reveal"><span style="--d:80ms">{site.texts.heroTitle}</span></span>
+				</h1>
+				<p class="load-rise mt-7 max-w-xl text-lg text-muted-dark" style="animation-delay:0.45s">
+					{site.texts.heroIntro}
+				</p>
+				<div class="load-rise mt-9 flex flex-wrap gap-3" style="animation-delay:0.6s">
+					<a href="/work" class="btn btn-primary">
+						Voir mes projets
+						<Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+					</a>
+					<a href="/contact" class="btn btn-ghost">Me contacter</a>
+				</div>
+				<div class="load-rise mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-dark" style="animation-delay:0.75s">
+					<a href={site.instagram.url} target="_blank" rel="noopener" class="link-underline inline-flex items-center gap-2 transition-colors hover:text-amber-soft">
+						<Icon name="simple-icons:instagram" class="size-4" aria-hidden="true" /> Instagram
+					</a>
+					<a href={`mailto:${site.email}`} class="link-underline inline-flex items-center gap-2 transition-colors hover:text-amber-soft">
+						<Icon name="lucide:mail" class="size-4" aria-hidden="true" /> E-mail
+					</a>
+					<a href={site.discord.url} target="_blank" rel="noopener" class="link-underline inline-flex items-center gap-2 transition-colors hover:text-amber-soft">
+						<Icon name="simple-icons:discord" class="size-4" aria-hidden="true" /> Discord
+					</a>
+				</div>
+			</div>
+
+			<div class="relative mx-auto w-full max-w-xs" data-parallax="14">
+				<div class="halo anim-glow absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2" style="background:var(--color-amber);opacity:0.4"></div>
+				<div class="relative overflow-hidden rounded-b-[2rem] rounded-t-[11rem] border border-cream/10 bg-white shadow-[var(--shadow-soft)]">
+					<Image
+						src={portrait}
+						alt="Portrait de Marie Lefebvre, monteuse vidéo"
+						widths={[240, 360]}
+						sizes="(min-width: 1024px) 20rem, 65vw"
+						loading="eager"
+						class="h-[27rem] w-full object-cover object-top md:h-[32rem]"
+					/>
+				</div>
+				<svg viewBox="0 0 300 90" class="pointer-events-none absolute -bottom-6 -left-6 w-36 text-amber-soft md:w-44" fill="none" aria-hidden="true">
+					<path d="M12,52 C60,12 240,8 288,44 C240,78 60,82 12,52 Z" stroke="currentColor" stroke-width="2" pathLength="1" class="draw-oval" />
+				</svg>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============================ SÉLECTION ============================ -->
+	<section class="section">
+		<div class="shell">
+			<div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+				<div>
+					<p class="eyebrow">Sélection</p>
+					<h2 class="mt-4 font-display text-4xl md:text-5xl">Projets récents.</h2>
+				</div>
+				<a href="/work" class="btn btn-ghost">
+					Tous les projets
+					<Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+				</a>
+			</div>
+
+			<!-- Projet mis en avant -->
+			<article class="mt-12 grid gap-8 lg:grid-cols-[1.35fr_1fr] lg:items-center" data-reveal>
+				<a href={`/work/${featuredProject.slug}`} class="card-media group relative block aspect-video">
+					<img
+						src={featuredProject.poster}
+						alt={`${featuredProject.title}${featuredProject.channel ? `, montage de ${featuredProject.channel}` : ''}`}
+						loading="eager"
+						decoding="async"
+						class="h-full w-full object-cover"
+					/>
+					<div class="card-sheen"></div>
+					<div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/65 to-transparent"></div>
+					<span class="absolute left-4 top-4"><span class="tag">{featuredProject.category}</span></span>
+					<span class="absolute right-4 top-4 flex size-11 items-center justify-center rounded-full bg-cream-50/90 text-ink backdrop-blur transition-colors group-hover:bg-amber" aria-hidden="true">
+						<Icon name="lucide:play" class="size-4 translate-x-[1px]" />
+					</span>
+				</a>
+
+				<div>
+					<span class="eyebrow">À la une</span>
+					<h3 class="mt-5 font-display text-3xl md:text-4xl">{featuredProject.title}</h3>
+					<p class="mt-4 text-muted">{featuredProject.channel ? `${featuredProject.channel} · ${featuredProject.format}` : featuredProject.format}</p>
+					<p class="mt-5 max-w-md text-cocoa">{featuredProject.description}</p>
+					<a href={`/work/${featuredProject.slug}`} class="btn btn-dark mt-8">
+						Voir le projet
+						<Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+					</a>
+				</div>
+			</article>
+
+			<div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				{selection.map((project, i) => (
+					<ProjectCard project={project} index={i} />
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ============================ SERVICES ============================ -->
+	<section class="on-forest grain relative overflow-hidden section">
+		<div class="halo anim-glow" style="width:30rem;height:30rem;background:var(--color-terracotta);top:-8rem;left:-8rem;opacity:0.35"></div>
+		<div class="shell relative">
+			<div class="max-w-2xl" data-reveal>
+				<p class="eyebrow">Ce que je fais</p>
+				<h2 class="mt-4 font-display text-4xl md:text-5xl">Montage, graphisme, communication.</h2>
+			</div>
+
+			<div class="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+				{services.map((service, i) => (
+					<div data-reveal style={`--reveal-delay:${i * 90}ms`}>
+						<div class="flex size-12 items-center justify-center rounded-full border border-cream/15 text-amber-soft">
+							<Icon name={service.icon} class="size-5" aria-hidden="true" />
+						</div>
+						<h3 class="mt-6 font-display text-2xl">{service.title}</h3>
+						<p class="mt-3 text-sm text-muted-dark">{service.lead}</p>
+					</div>
+				))}
+			</div>
+
+			<div class="mt-14" data-reveal>
+				<a href="/services" class="btn btn-ghost">
+					Voir les services
+					<Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============================ À PROPOS ============================ -->
+	<section class="section">
+		<div class="shell grid items-center gap-14 lg:grid-cols-2">
+			<div data-reveal="left">
+				<p class="eyebrow">À propos</p>
+				<h2 class="mt-4 font-display text-4xl md:text-5xl">Derrière le montage.</h2>
+				<p class="mt-6 text-lg text-cocoa">
+					Diplômée en communication et passionnée de montage depuis des années, je mets mes services
+					à votre disposition pour faire décoller vos projets. Passionnée de musique, d’art et de cinéma,
+					je mets mon esprit créatif au service de votre demande.
+				</p>
+				<a href="/about" class="btn btn-ghost mt-8">
+					En savoir plus
+					<Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+				</a>
+			</div>
+
+			<div class="relative overflow-hidden rounded-[var(--radius-card)] border border-line bg-forest-deep p-8 text-cream-100 md:p-12" data-reveal="right">
+				<div class="halo anim-drift" style="width:16rem;height:16rem;background:var(--color-amber);bottom:-4rem;right:-4rem;opacity:0.35"></div>
+				<p class="script relative text-4xl text-amber-soft">Mon métier,</p>
+				<ul class="relative mt-6 space-y-5 text-lg">
+					<li class="flex gap-4">
+						<Icon name="lucide:check" class="mt-1 size-5 shrink-0 text-amber-soft" aria-hidden="true" />
+						<span>Comprendre votre projet.</span>
+					</li>
+					<li class="flex gap-4">
+						<Icon name="lucide:check" class="mt-1 size-5 shrink-0 text-amber-soft" aria-hidden="true" />
+						<span>Donner du rythme à vos images.</span>
+					</li>
+					<li class="flex gap-4">
+						<Icon name="lucide:check" class="mt-1 size-5 shrink-0 text-amber-soft" aria-hidden="true" />
+						<span>Soigner le détail jusqu’à la livraison.</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============================ AVIS ============================ -->
+	<section class="section border-y border-line bg-cream-50">
+		<div class="shell">
+			<div class="mx-auto max-w-2xl text-center" data-reveal>
+				<p class="eyebrow justify-center">Témoignages clients</p>
+				<h2 class="mt-4 font-display text-4xl md:text-5xl">Ils m’ont fait confiance.</h2>
+			</div>
+
+			{reviews.length > 0 ? (
+				<div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+					{reviews.map((review, i) => <ReviewCard review={review} index={i} />)}
+				</div>
+			) : (
+				<div class="mx-auto mt-12 flex max-w-xl flex-col items-center gap-6 rounded-[var(--radius-card)] border border-dashed border-sand-dark bg-cream p-10 text-center" data-reveal>
+					<span class="flex size-12 items-center justify-center rounded-full bg-ink text-amber-soft">
+						<Icon name="lucide:message-square-quote" class="size-5" aria-hidden="true" />
+					</span>
+					<p class="font-display text-2xl text-ink">Les premiers avis arrivent bientôt.</p>
+					<p class="text-sm text-muted">
+						Cette section est prête à accueillir les témoignages de mes clients.
+					</p>
+					<a href={site.instagram.url} target="_blank" rel="noopener" class="btn btn-ghost">
+						<Icon name="simple-icons:instagram" class="size-4" aria-hidden="true" />
+						Me suivre en attendant
+					</a>
+				</div>
+			)}
+		</div>
+	</section>
+
+	<!-- ============================ CONTACT ============================ -->
+	<section class="on-dark grain relative overflow-hidden section">
+		<div class="halo anim-glow" style="width:34rem;height:34rem;background:var(--color-terracotta);bottom:-12rem;right:-8rem;opacity:0.45"></div>
+		<div class="shell relative text-center">
+			<p class="script text-4xl text-amber-soft" data-reveal>Travaillons ensemble !</p>
+			<h2 class="mx-auto mt-4 max-w-3xl font-display text-4xl md:text-6xl" data-reveal>
+				Vous voulez faire décoller votre chaîne, marque ou entreprise ?
+			</h2>
+			<p class="mx-auto mt-6 max-w-xl text-muted-dark" data-reveal>
+				Écrivez-moi, je reviens vers vous avec mes disponibilités.
+			</p>
+			<div class="mt-10 flex flex-wrap justify-center gap-3" data-reveal>
+				<a href={`mailto:${site.email}`} class="btn btn-primary">
+					<Icon name="lucide:mail" class="size-4" aria-hidden="true" />
+					{site.email}
+				</a>
+				<a href="/contact" class="btn btn-ghost">Page contact</a>
+			</div>
+		</div>
+	</section>
+</Base>

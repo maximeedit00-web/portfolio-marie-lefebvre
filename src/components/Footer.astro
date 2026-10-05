@@ -1,0 +1,65 @@
+---
+import { Icon } from 'astro-icon/components';
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="on-dark grain relative overflow-hidden">
+	<div class="halo anim-drift" style="width:26rem;height:26rem;background:var(--color-terracotta);bottom:-10rem;left:-6rem;opacity:0.35;"></div>
+	<div class="shell relative py-16 md:py-24">
+		<div class="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
+			<div>
+				<a href="/" class="font-display text-3xl">Marie Lefebvre</a>
+				<p class="script mt-3 text-2xl text-amber-soft">Monteuse vidéo</p>
+				<p class="mt-5 max-w-xs text-sm text-muted-dark">{site.tagline}</p>
+				<div class="mt-6 flex gap-3">
+					<a href={site.instagram.url} target="_blank" rel="noopener" aria-label="Instagram" class="flex size-11 items-center justify-center rounded-full border border-current/20 transition-colors hover:border-amber-soft hover:text-amber-soft">
+						<Icon name="simple-icons:instagram" class="size-5" aria-hidden="true" />
+					</a>
+					<a href={`mailto:${site.email}`} aria-label="Envoyer un e-mail" class="flex size-11 items-center justify-center rounded-full border border-current/20 transition-colors hover:border-amber-soft hover:text-amber-soft">
+						<Icon name="lucide:mail" class="size-5" aria-hidden="true" />
+					</a>
+					<a href={site.discord.url} target="_blank" rel="noopener" aria-label="Discord" class="flex size-11 items-center justify-center rounded-full border border-current/20 transition-colors hover:border-amber-soft hover:text-amber-soft">
+						<Icon name="simple-icons:discord" class="size-5" aria-hidden="true" />
+					</a>
+				</div>
+			</div>
+
+			<nav aria-label="Navigation du pied de page">
+				<p class="eyebrow mb-5">Navigation</p>
+				<ul class="flex flex-col gap-3 text-sm">
+					{site.nav.map((item) => (
+						<li><a href={item.href} class="link-underline text-muted-dark transition-colors hover:text-cream-50">{item.label}</a></li>
+					))}
+				</ul>
+			</nav>
+
+			<div>
+				<p class="eyebrow mb-5">Contact</p>
+				<ul class="flex flex-col gap-3 text-sm">
+					<li>
+						<a href={`mailto:${site.email}`} class="link-underline break-all text-muted-dark transition-colors hover:text-cream-50">
+							{site.email}
+						</a>
+					</li>
+					<li>
+						<a href={site.instagram.url} target="_blank" rel="noopener" class="link-underline text-muted-dark transition-colors hover:text-cream-50">
+							Instagram : {site.instagram.handle}
+						</a>
+					</li>
+					<li>
+						<a href={site.discord.url} target="_blank" rel="noopener" class="link-underline text-muted-dark transition-colors hover:text-cream-50">
+							Discord : {site.discord.handle}
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="mt-16 flex flex-col gap-3 border-t border-current/10 pt-6 text-xs text-muted-dark sm:flex-row sm:items-center sm:justify-between">
+			<p>© {year} Marie Lefebvre. Tous droits réservés.</p>
+			<p>Montage vidéo · Graphisme · Communication</p>
+		</div>
+	</div>
+</footer>

@@ -1,0 +1,45 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { Review } from '../data/reviews';
+
+interface Props {
+	review: Review;
+	index?: number;
+}
+
+const { review, index = 0 } = Astro.props;
+const name = review.author ?? 'Avis client';
+const initial = review.author ? review.author.charAt(0) : '★';
+const meta = [review.role, review.source, review.date].filter(Boolean).join(' · ');
+---
+
+<figure
+	class="flex h-full flex-col justify-between rounded-[var(--radius-card)] border border-line bg-cream-50 p-8 shadow-[var(--shadow-soft)]"
+	data-reveal
+	style={`--reveal-delay:${(index % 3) * 100}ms`}
+>
+	<div>
+		<div class="flex items-center justify-between">
+			<div class="flex gap-1 text-amber" role="img" aria-label={`Note : ${review.rating} sur 5`}>
+				{Array.from({ length: 5 }).map((_, i) => (
+					<svg viewBox="0 0 24 24" class:list={['size-4', i < review.rating ? 'fill-current' : 'fill-none stroke-current opacity-30']} aria-hidden="true">
+						<path d="M12 2.2l2.94 6.36 6.96.64-5.24 4.6 1.56 6.8L12 17.16 5.78 20.6l1.56-6.8-5.24-4.6 6.96-.64z" />
+					</svg>
+				))}
+			</div>
+			<Icon name="lucide:quote" class="size-7 text-sand-dark" aria-hidden="true" />
+		</div>
+		<blockquote class="mt-6 font-display text-xl leading-snug text-ink md:text-2xl">
+			« {review.text} »
+		</blockquote>
+	</div>
+	<figcaption class="mt-8 flex items-center gap-3 border-t border-line pt-5 text-sm">
+		<span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-ink font-display text-base text-amber-soft">
+			{initial}
+		</span>
+		<span>
+			<span class="block font-medium text-ink">{name}</span>
+			{meta && <span class="text-muted">{meta}</span>}
+		</span>
+	</figcaption>
+</figure>
