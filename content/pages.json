@@ -49,20 +49,50 @@
   },
   "mentions": {
     "sections": [
-      { "titre": "Éditeur du site", "texte": "Marie Lefebvre\n[Adresse à compléter]\nE-mail : marie.lefebvre.contact@gmail.com\nSIRET : [à compléter]" },
-      { "titre": "Responsable de la publication", "texte": "Marie Lefebvre." },
-      { "titre": "Hébergement", "texte": "Netlify, Inc. — 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis." },
-      { "titre": "Propriété intellectuelle", "texte": "L'ensemble des contenus du site est protégé par le droit d'auteur et demeure la propriété de Marie Lefebvre et/ou de leurs auteurs. Toute reproduction sans autorisation écrite préalable est interdite." },
-      { "titre": "Données personnelles et cookies", "texte": "Ce site ne dépose aucun cookie de mesure d'audience ou publicitaire et ne comporte pas de formulaire. Voir la politique de confidentialité." }
+      {
+        "titre": "Éditeur du site",
+        "texte": "Le présent site est édité par : Marie Lefebvre\nNom et prénom : Lefebvre Marie\nStatut : Entrepreneur individuel (micro-entrepreneur / auto-entrepreneur)\nAdresse : Châteaugiron\nNuméro SIRET : 1073 637 310 0012\nE-mail de contact : Marie.lefebvre.contact@gmail.com\nTéléphone : 07 67 82 46 81\nDirecteur de la publication : Lefebvre Marie\nActivité exercée : montage vidéo / création de contenu audiovisuel / Graphisme"
+      },
+      {
+        "titre": "Responsable de la publication",
+        "texte": "Marie Lefebvre."
+      },
+      {
+        "titre": "Hébergement",
+        "texte": "Netlify, Inc. — 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis."
+      },
+      {
+        "titre": "Propriété intellectuelle",
+        "texte": "L'ensemble des contenus du site est protégé par le droit d'auteur et demeure la propriété de Marie Lefebvre et/ou de leurs auteurs. Toute reproduction sans autorisation écrite préalable est interdite."
+      },
+      {
+        "titre": "Données personnelles et cookies",
+        "texte": "Ce site ne dépose aucun cookie de mesure d'audience ou publicitaire et ne comporte pas de formulaire. Voir la politique de confidentialité."
+      }
     ]
   },
   "confidentialite": {
     "sections": [
-      { "titre": "Responsable du traitement", "texte": "Marie Lefebvre — marie.lefebvre.contact@gmail.com" },
-      { "titre": "Données collectées", "texte": "Ce site ne comporte pas de formulaire et ne collecte aucune donnée à votre insu. Les seules informations traitées sont celles que vous transmettez volontairement par e-mail ou via les réseaux sociaux." },
-      { "titre": "Cookies", "texte": "Ce site n'utilise pas de cookies de suivi, de mesure d'audience ou de publicité." },
-      { "titre": "Vos droits", "texte": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition. Pour l'exercer : marie.lefebvre.contact@gmail.com. Vous pouvez aussi saisir la CNIL (www.cnil.fr)." },
-      { "titre": "Hébergement", "texte": "Netlify, Inc. — 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis." }
+      {
+        "titre": "Responsable du traitement",
+        "texte": "Marie Lefebvre — marie.lefebvre.contact@gmail.com"
+      },
+      {
+        "titre": "Données collectées",
+        "texte": "Ce site ne comporte pas de formulaire et ne collecte aucune donnée à votre insu. Les seules informations traitées sont celles que vous transmettez volontairement par e-mail ou via les réseaux sociaux."
+      },
+      {
+        "titre": "Cookies",
+        "texte": "Ce site n'utilise pas de cookies de suivi, de mesure d'audience ou de publicité."
+      },
+      {
+        "titre": "Vos droits",
+        "texte": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition. Pour l'exercer : marie.lefebvre.contact@gmail.com. Vous pouvez aussi saisir la CNIL (www.cnil.fr)."
+      },
+      {
+        "titre": "Hébergement",
+        "texte": "Netlify, Inc. — 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis."
+      }
     ]
   }
 }
