@@ -27,6 +27,7 @@ collections:
           - { label: "Spécialités (séparées par ·)", name: "speciality", widget: "string" }
           - { label: "Accroche", name: "tagline", widget: "string" }
           - { label: "Description pour Google", name: "description", widget: "text" }
+          - { label: "Image d'aperçu du lien (optionnel)", name: "og_image", widget: "image", required: false, hint: "Image affichée quand on partage le lien. Laisser vide pour ne PAS afficher d'image." }
           - { label: "E-mail", name: "email", widget: "string" }
           - { label: "Instagram (pseudo)", name: "instagram_handle", widget: "string" }
           - { label: "Instagram (lien complet)", name: "instagram_url", widget: "string" }
@@ -243,3 +244,54 @@ collections:
                 fields:
                   - { label: "Titre", name: "titre", widget: "string" }
                   - { label: "Texte", name: "texte", widget: "text" }
+
+  - name: navigation
+    label: "9. Navigation (onglets du menu)"
+    files:
+      - name: navigation
+        label: "Menu du site"
+        file: "content/navigation.json"
+        fields:
+          - label: "Onglets"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.label}} → {{fields.href}}"
+            hint: "Ajoute un onglet, ou glisse-dépose pour changer l'ordre."
+            fields:
+              - { label: "Nom de l'onglet", name: "label", widget: "string" }
+              - { label: "Lien", name: "href", widget: "string", hint: "Vers une page existante (ex. /contact) ou une page créée en 10 (ex. /ma-page)" }
+
+  - name: custompages
+    label: "10. Pages personnalisées"
+    files:
+      - name: custompages
+        label: "Mes pages"
+        file: "content/custom-pages.json"
+        fields:
+          - label: "Pages"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            hint: "Crée une page, puis ajoute son lien (ex. /ma-page) dans la section 9 pour l'afficher dans le menu."
+            fields:
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Lien (slug, sans espaces ni accents)", name: "slug", widget: "string", hint: "Ex. mon-projet → la page sera /mon-projet" }
+              - { label: "Sous-titre au-dessus du titre (optionnel)", name: "eyebrow", widget: "string", required: false }
+              - { label: "Petit mot manuscrit (optionnel)", name: "script", widget: "string", required: false }
+              - { label: "Description (optionnel)", name: "description", widget: "text", required: false }
+              - label: "Blocs de contenu"
+                name: "blocks"
+                widget: "list"
+                summary: "{{fields.type}}"
+                hint: "Ajoute des blocs : du texte, ou une galerie d'images."
+                fields:
+                  - { label: "Type de bloc", name: "type", widget: "select", options: ["texte", "galerie"] }
+                  - { label: "Titre (optionnel)", name: "titre", widget: "string", required: false }
+                  - { label: "Texte (si type = texte)", name: "texte", widget: "text", required: false }
+                  - label: "Images (si type = galerie)"
+                    name: "images"
+                    widget: "list"
+                    required: false
+                    fields:
+                      - { label: "Image", name: "image", widget: "image" }
+                      - { label: "Légende (optionnel)", name: "legende", widget: "string", required: false }

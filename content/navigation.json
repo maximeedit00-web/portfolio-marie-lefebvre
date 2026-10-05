@@ -1,0 +1,12 @@
+{
+  "items": [
+    { "label": "Accueil", "href": "/" },
+    { "label": "Montage", "href": "/work" },
+    { "label": "Graphisme", "href": "/graphisme" },
+    { "label": "Comm", "href": "/comm" },
+    { "label": "À propos", "href": "/about" },
+    { "label": "Services", "href": "/services" },
+    { "label": "Avis", "href": "/avis" },
+    { "label": "Contact", "href": "/contact" }
+  ]
+}

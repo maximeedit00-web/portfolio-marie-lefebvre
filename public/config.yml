@@ -27,6 +27,7 @@ collections:
           - { label: "Spécialités (séparées par ·)", name: "speciality", widget: "string" }
           - { label: "Accroche", name: "tagline", widget: "string" }
           - { label: "Description pour Google", name: "description", widget: "text" }
+          - { label: "Image d'aperçu du lien (optionnel)", name: "og_image", widget: "image", required: false, hint: "Image affichée quand on partage le lien. Laisser vide pour ne PAS afficher d'image." }
           - { label: "E-mail", name: "email", widget: "string" }
           - { label: "Instagram (pseudo)", name: "instagram_handle", widget: "string" }
           - { label: "Instagram (lien complet)", name: "instagram_url", widget: "string" }

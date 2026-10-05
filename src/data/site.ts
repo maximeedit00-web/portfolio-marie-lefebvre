@@ -1,8 +1,9 @@
 import settings from '../../content/settings.json';
+import navigation from '../../content/navigation.json';
 
 /**
- * Informations du site — modifiables depuis /admin (Decap CMS).
- * Les valeurs viennent de content/settings.json.
+ * Informations du site — modifiables depuis /admin.
+ * Les valeurs viennent de content/settings.json et content/navigation.json.
  */
 export const site = {
 	name: settings.name,
@@ -16,6 +17,9 @@ export const site = {
 	instagram: { handle: settings.instagram_handle, url: settings.instagram_url },
 	discord: { handle: settings.discord_handle, url: settings.discord_url },
 
+	/** Image d'aperçu lors du partage du lien (facultative). */
+	ogImage: (settings as any).og_image || '',
+
 	/** Textes principaux, modifiables depuis l'admin. */
 	texts: {
 		heroScript: settings.hero_script,
@@ -26,16 +30,8 @@ export const site = {
 		aboutP3: settings.about_p3,
 	},
 
-	nav: [
-		{ label: 'Accueil', href: '/' },
-		{ label: 'Montage', href: '/work' },
-		{ label: 'Graphisme', href: '/graphisme' },
-		{ label: 'Comm', href: '/comm' },
-		{ label: 'À propos', href: '/about' },
-		{ label: 'Services', href: '/services' },
-		{ label: 'Avis', href: '/avis' },
-		{ label: 'Contact', href: '/contact' },
-	],
+	/** Onglets du menu — modifiables depuis l'admin (content/navigation.json). */
+	nav: navigation.items,
 } as const;
 
-export type NavItem = (typeof site.nav)[number];
+export type NavItem = { label: string; href: string };

@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import data from '../../content/custom-pages.json';
+
+export function getStaticPaths() {
+	return (data.items || []).map((page) => ({
+		params: { slug: page.slug },
+		props: { page },
+	}));
+}
+
+const { page } = Astro.props;
+---
+
+<Base title={page.title} description={page.description || ''}>
+	<PageHero
+		script={page.script || undefined}
+		eyebrow={page.eyebrow || page.title}
+		title={page.title}
+		description={page.description || undefined}
+	/>
+
+	<section class="section">
+		<div class="shell max-w-3xl space-y-16">
+			{(page.blocks || []).map((block) =>
+				block.type === 'galerie' ? (
+					<div>
+						{block.titre && <h2 class="font-display text-3xl md:text-4xl">{block.titre}</h2>}
+						<div class="mt-8 grid gap-6 sm:grid-cols-2">
+							{(block.images || []).map((im) => (
+								<figure>
+									<div class="card-media aspect-video bg-white">
+										<img src={im.image} alt={im.legende || ''} loading="lazy" decoding="async" class="h-full w-full object-cover" />
+										<div class="card-sheen"></div>
+									</div>
+									{im.legende && <figcaption class="mt-2 text-sm text-muted">{im.legende}</figcaption>}
+								</figure>
+							))}
+						</div>
+					</div>
+				) : (
+					<div>
+						{block.titre && <h2 class="font-display text-3xl md:text-4xl">{block.titre}</h2>}
+						{block.texte && <p class="mt-5 whitespace-pre-line text-lg text-cocoa">{block.texte}</p>}
+					</div>
+				),
+			)}
+		</div>
+	</section>
+</Base>
