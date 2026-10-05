@@ -9,9 +9,8 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
-	// TODO : remplacer par l'URL réelle du site une fois en ligne (utilisée pour
-	// le canonical, le sitemap et les balises Open Graph).
-	site: 'https://example.com',
+	// URL publique du site (Cloudflare Pages). À ajuster si le nom du projet change.
+	site: 'https://portfolio-marie-lefebvre.pages.dev',
 	integrations: [mdx(), sitemap(), icon()],
 
 	fonts: [
