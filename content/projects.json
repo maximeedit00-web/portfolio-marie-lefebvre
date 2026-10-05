@@ -158,6 +158,32 @@
     },
     {
       "channel": "",
+      "slug": "reel-black-sterling",
+      "poster": "/media/projects/reel-black-sterling.jpg",
+      "featured": false,
+      "orientation": "vertical",
+      "videoId": "",
+      "videoFile": "/videos/reel-black-sterling.mp4",
+      "format": "9:16",
+      "title": "Reel Black Sterling",
+      "description": "Reel vertical.",
+      "category": "Formats courts"
+    },
+    {
+      "channel": "",
+      "slug": "reel-vertical",
+      "poster": "/media/projects/reel-vertical.jpg",
+      "featured": false,
+      "orientation": "vertical",
+      "videoId": "",
+      "videoFile": "/videos/reel-vertical.mp4",
+      "format": "9:16",
+      "title": "Reel conseils montage",
+      "description": "Reel vertical.",
+      "category": "Formats courts"
+    },
+    {
+      "channel": "",
       "slug": "matcom-foot",
       "poster": "/media/projects/matcom-foot.jpg",
       "featured": false,
@@ -204,33 +230,7 @@
       "videoId": "bTd8DNlNAeQ",
       "videoFile": "",
       "format": "9:16",
-      "title": "Reel",
-      "description": "Reel vertical.",
-      "category": "Formats courts"
-    },
-    {
-      "channel": "",
-      "slug": "reel-black-sterling",
-      "poster": "/media/projects/reel-black-sterling.jpg",
-      "featured": false,
-      "orientation": "vertical",
-      "videoId": "",
-      "videoFile": "/videos/reel-black-sterling.mp4",
-      "format": "9:16",
-      "title": "Reel Black Sterling",
-      "description": "Reel vertical.",
-      "category": "Formats courts"
-    },
-    {
-      "channel": "",
-      "slug": "reel-vertical",
-      "poster": "/media/projects/reel-vertical.jpg",
-      "featured": false,
-      "orientation": "vertical",
-      "videoId": "",
-      "videoFile": "/videos/reel-vertical.mp4",
-      "format": "9:16",
-      "title": "Reel vertical",
+      "title": "Reel site",
       "description": "Reel vertical.",
       "category": "Formats courts"
     }
