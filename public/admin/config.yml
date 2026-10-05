@@ -50,7 +50,7 @@ collections:
             name: "items"
             widget: "list"
             summary: "{{fields.title}}"
-            hint: "Pour ajouter une vidéo : bouton en bas de liste. Remplis un ID YouTube OU un fichier vidéo."
+            hint: "Pour ajouter une vidéo : bouton en bas de liste. Remplis un ID YouTube OU un fichier vidéo. Glisse-dépose pour changer l'ordre."
             fields:
               - { label: "Titre", name: "title", widget: "string" }
               - { label: "Identifiant du lien (sans espaces ni accents)", name: "slug", widget: "string", hint: "Ex. mon-super-montage" }
@@ -78,7 +78,7 @@ collections:
             name: "items"
             widget: "list"
             summary: "{{fields.title}}"
-            hint: "Supprime une miniature avec la corbeille, ou ajoute-en une en bas."
+            hint: "Supprime une miniature avec la corbeille, ou ajoute-en une en bas. Glisse-dépose pour changer l'ordre."
             fields:
               - { label: "Titre (optionnel)", name: "title", widget: "string", required: false }
               - { label: "Image", name: "poster", widget: "image" }
@@ -94,6 +94,7 @@ collections:
             name: "items"
             widget: "list"
             summary: "{{fields.title}}"
+            hint: "Glisse-dépose pour changer l'ordre."
             fields:
               - { label: "Titre (optionnel)", name: "title", widget: "string", required: false }
               - { label: "Image", name: "poster", widget: "image" }
@@ -109,6 +110,7 @@ collections:
             name: "items"
             widget: "list"
             summary: "{{fields.title}}"
+            hint: "Glisse-dépose pour changer l'ordre."
             fields:
               - { label: "Titre (optionnel)", name: "title", widget: "string", required: false }
               - { label: "Légende (optionnel)", name: "description", widget: "string", required: false }
@@ -125,8 +127,11 @@ collections:
             name: "items"
             widget: "list"
             summary: "{{fields.author}}"
+            hint: "Glisse-dépose un avis pour changer son ordre."
             fields:
               - { label: "Nom", name: "author", widget: "string", required: false }
+              - { label: "Photo (optionnel)", name: "avatar", widget: "image", required: false, hint: "La photo s'affiche à côté de l'avis" }
+              - { label: "Lien de la chaîne / du profil (optionnel)", name: "url", widget: "string", required: false, hint: "Ex. https://youtube.com/@... — le nom de la personne deviendra cliquable" }
               - { label: "Contexte", name: "role", widget: "string", required: false }
               - { label: "Note (1 à 5)", name: "rating", widget: "number", min: 1, max: 5, default: 5 }
               - { label: "Texte", name: "text", widget: "text" }

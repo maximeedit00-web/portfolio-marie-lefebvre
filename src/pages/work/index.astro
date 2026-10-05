@@ -7,7 +7,8 @@ import { site } from '../../data/site';
 import { projects, categories, featuredProject } from '../../data/projects';
 
 const rest = projects.filter((p) => p.slug !== featuredProject.slug);
-const spanFor = (orientation: string) => (orientation === 'vertical' ? 'lg:col-span-3' : 'lg:col-span-4');
+const montages = rest.filter((p) => p.orientation !== 'vertical');
+const formatsCourts = rest.filter((p) => p.orientation === 'vertical');
 
 const formats = [
 	{ title: 'Montage long', text: 'Des vidéos narratives, construites pour tenir dans la durée.' },
@@ -85,13 +86,25 @@ const formats = [
 				</div>
 			</article>
 
-			<!-- Grille -->
+			<!-- Montages (format horizontal) -->
 			<div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-12">
-				{rest.map((project, i) => (
-					<div class:list={['sm:col-span-1', spanFor(project.orientation)]} data-project-item data-category={project.category}>
+				{montages.map((project, i) => (
+					<div class="lg:col-span-4" data-project-item data-category={project.category}>
 						<ProjectCard project={project} index={i} />
 					</div>
 				))}
+			</div>
+
+			<!-- Formats courts (format vertical) -->
+			<div class="mt-16" data-shorts data-reveal>
+				<p class="eyebrow">Formats courts</p>
+				<div class="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+					{formatsCourts.map((project, i) => (
+						<div data-project-item data-category={project.category}>
+							<ProjectCard project={project} index={i} />
+						</div>
+					))}
+				</div>
 			</div>
 
 			<p class="mt-12 text-center text-sm text-muted" data-reveal>D’autres projets sont en cours de montage.</p>
@@ -151,6 +164,12 @@ const formats = [
 				const cat = item.getAttribute('data-category');
 				const show = filter === 'Tous' || cat === filter;
 				item.style.display = show ? '' : 'none';
+			});
+			document.querySelectorAll<HTMLElement>('[data-shorts]').forEach((sec) => {
+				const anyVisible = [...sec.querySelectorAll<HTMLElement>('[data-project-item]')].some(
+					(el) => el.style.display !== 'none',
+				);
+				sec.style.display = anyVisible ? '' : 'none';
 			});
 		}
 
