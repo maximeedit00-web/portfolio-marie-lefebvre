@@ -20,6 +20,8 @@ export const services: Service[] = [
 		title: 'Montage vidéo',
 		lead: 'Je monte vos vidéos de A à Z : sélection, rythme, habillage, livraison.',
 		items: ['Formats courts', 'Storytelling', 'Défis IRL & multicam', 'Gameplay YouTubeur', 'Motion design', 'Intro & vlog'],
+		href: '/work',
+		linkLabel: 'Voir les montages',
 	},
 	{
 		icon: 'lucide:palette',
