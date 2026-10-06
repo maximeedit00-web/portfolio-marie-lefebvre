@@ -233,6 +233,17 @@
       "title": "Reel site",
       "description": "Reel vertical.",
       "category": "Formats courts"
+    },
+    {
+      "channel": "Survie Tiktok",
+      "slug": "https://www.tiktok.com/@gabinpriv/video/7693196838488329505?is_from_webapp=1&sender_device=pc&web_id=7657319342014826006",
+      "poster": "https://www.tiktok.com/@gabinpriv/video/7693196838488329505?is_from_webapp=1&sender_device=pc&web_id=7657319342014826006",
+      "featured": false,
+      "orientation": "vertical",
+      "format": "9:16",
+      "title": "Compilation prank pillage",
+      "description": "Compilation de pranks",
+      "category": "Formats courts"
     }
   ]
 }
