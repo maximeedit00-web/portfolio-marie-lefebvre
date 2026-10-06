@@ -171,19 +171,6 @@
     },
     {
       "channel": "",
-      "slug": "reel-vertical",
-      "poster": "/media/projects/reel-vertical.jpg",
-      "featured": false,
-      "orientation": "vertical",
-      "videoId": "",
-      "videoFile": "/videos/reel-vertical.mp4",
-      "format": "9:16",
-      "title": "Reel conseils montage",
-      "description": "Reel vertical.",
-      "category": "Formats courts"
-    },
-    {
-      "channel": "",
       "slug": "matcom-foot",
       "poster": "/media/projects/matcom-foot.jpg",
       "featured": false,
