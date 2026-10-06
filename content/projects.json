@@ -1,17 +1,17 @@
 {
   "items": [
     {
-      "channel": "",
-      "slug": "motion-design",
-      "poster": "/media/projects/motion-design.jpg",
-      "featured": false,
+      "channel": "Timéoox",
+      "slug": "ia-professionnels",
+      "poster": "/media/projects/ia-professionnels.jpg",
+      "featured": true,
       "orientation": "horizontal",
-      "videoId": "",
-      "videoFile": "/videos/motion-design.mp4",
+      "videoId": "HWN1KB9d9QQ",
+      "videoFile": "",
       "format": "16:9",
-      "title": "Motion design",
-      "description": "Animation et habillage en motion design.",
-      "category": "Motion design"
+      "title": "L'IA a-t-elle réussi à tromper des professionnels ?",
+      "description": "Montée pour Timéoox.",
+      "category": "Créateurs"
     },
     {
       "channel": "",
@@ -27,19 +27,6 @@
       "category": "Trailer"
     },
     {
-      "channel": "Timéoox",
-      "slug": "ia-professionnels",
-      "poster": "/media/projects/ia-professionnels.jpg",
-      "featured": true,
-      "orientation": "horizontal",
-      "videoId": "HWN1KB9d9QQ",
-      "videoFile": "",
-      "format": "16:9",
-      "title": "L'IA a-t-elle réussi à tromper des professionnels ?",
-      "description": "Montée pour Timéoox.",
-      "category": "Créateurs"
-    },
-    {
       "channel": "",
       "slug": "vlog-restaurant",
       "poster": "/media/projects/vlog-restaurant.jpg",
@@ -51,6 +38,32 @@
       "title": "Vlog restaurant Fabonaway",
       "description": "Vlog tourné en restaurant.",
       "category": "Vlog"
+    },
+    {
+      "channel": "",
+      "slug": "motion-design",
+      "poster": "/media/projects/motion-design.jpg",
+      "featured": false,
+      "orientation": "horizontal",
+      "videoId": "",
+      "videoFile": "/videos/motion-design.mp4",
+      "format": "16:9",
+      "title": "Motion design",
+      "description": "Animation et habillage en motion design.",
+      "category": "Motion design"
+    },
+    {
+      "channel": "",
+      "slug": "gener-echecs",
+      "poster": "/media/projects/gener-echecs.jpg",
+      "featured": false,
+      "orientation": "horizontal",
+      "videoId": "-3BpNXcZxTY",
+      "videoFile": "",
+      "format": "16:9",
+      "title": "Le génie détruit par les échecs",
+      "description": "Montage storytelling autour d’une partie d’échecs.",
+      "category": "Montage long"
     },
     {
       "channel": "",
@@ -76,19 +89,6 @@
       "format": "16:9",
       "title": "Son ami décédé se connecte sur son serveur Minecraft…",
       "description": "Minecraft, ambiance horreur.",
-      "category": "Montage long"
-    },
-    {
-      "channel": "",
-      "slug": "gener-echecs",
-      "poster": "/media/projects/gener-echecs.jpg",
-      "featured": false,
-      "orientation": "horizontal",
-      "videoId": "-3BpNXcZxTY",
-      "videoFile": "",
-      "format": "16:9",
-      "title": "Le génie détruit par les échecs",
-      "description": "Montage storytelling autour d’une partie d’échecs.",
       "category": "Montage long"
     },
     {
